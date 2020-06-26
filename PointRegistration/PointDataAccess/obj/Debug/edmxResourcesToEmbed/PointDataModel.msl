@@ -1,0 +1,1014 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="PointDBModelStoreContainer" CdmEntityContainer="PointDBEntities">
+    <FunctionImportMapping FunctionImportName="GetStudentProfile" FunctionName="PointDBModel.Store.GetStudentProfile">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="PointDBModel.GetStudentProfile_Result">
+          <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+          <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+          <ScalarProperty Name="ProjectName" ColumnName="ProjectName" />
+          <ScalarProperty Name="GitHubLink" ColumnName="GitHubLink" />
+          <ScalarProperty Name="CourseOfferedID" ColumnName="CourseOfferedID" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="FName" ColumnName="FName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="PointDBModel.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="PointDBModel.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="PointDBModel.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="PointDBModel.Store.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="PointDBModel.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="PointDBModel.Store.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="PointDBModel.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="PointDBModel.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="PointDBModel.Store.sp_upgraddiagrams" />
+    <EntitySetMapping Name="Drivers">
+      <EntityTypeMapping TypeName="PointDBModel.Driver">
+        <MappingFragment StoreEntitySet="Driver">
+          <ScalarProperty Name="ContactNumber" ColumnName="ContactNumber" />
+          <ScalarProperty Name="DriverName" ColumnName="DriverName" />
+          <ScalarProperty Name="CNIC" ColumnName="CNIC" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Points">
+      <EntityTypeMapping TypeName="PointDBModel.Point">
+        <MappingFragment StoreEntitySet="Point">
+          <ScalarProperty Name="CNIC" ColumnName="CNIC" />
+          <ScalarProperty Name="NumberOfSeats" ColumnName="NumberOfSeats" />
+          <ScalarProperty Name="NumberPlate" ColumnName="NumberPlate" />
+          <ScalarProperty Name="PointID" ColumnName="PointID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PointFees">
+      <EntityTypeMapping TypeName="PointDBModel.PointFee">
+        <MappingFragment StoreEntitySet="PointFee">
+          <ScalarProperty Name="SemesterID" ColumnName="SemesterID" />
+          <ScalarProperty Name="FineCharges" ColumnName="FineCharges" />
+          <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+          <ScalarProperty Name="TransportFee" ColumnName="TransportFee" />
+          <ScalarProperty Name="FeeID" ColumnName="FeeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PointPayments">
+      <EntityTypeMapping TypeName="PointDBModel.PointPayment">
+        <MappingFragment StoreEntitySet="PointPayment">
+          <ScalarProperty Name="FeeID" ColumnName="FeeID" />
+          <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+          <ScalarProperty Name="PaymentID" ColumnName="PaymentID" />
+          <ScalarProperty Name="TotalPayable" ColumnName="TotalPayable" />
+          <ScalarProperty Name="NumberofDaysLate" ColumnName="NumberofDaysLate" />
+          <ScalarProperty Name="DepositDate" ColumnName="DepositDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Routes">
+      <EntityTypeMapping TypeName="PointDBModel.Route">
+        <MappingFragment StoreEntitySet="Route">
+          <ScalarProperty Name="RouteTime" ColumnName="RouteTime" />
+          <ScalarProperty Name="RouteStop" ColumnName="RouteStop" />
+          <ScalarProperty Name="PointID" ColumnName="PointID" />
+          <ScalarProperty Name="RouteID" ColumnName="RouteID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Semesters">
+      <EntityTypeMapping TypeName="PointDBModel.Semester">
+        <MappingFragment StoreEntitySet="Semester">
+          <ScalarProperty Name="SemesterType" ColumnName="SemesterType" />
+          <ScalarProperty Name="SemesterName" ColumnName="SemesterName" />
+          <ScalarProperty Name="SemesterID" ColumnName="SemesterID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Students">
+      <EntityTypeMapping TypeName="PointDBModel.Student">
+        <MappingFragment StoreEntitySet="Student">
+          <ScalarProperty Name="ProgrammeID" ColumnName="ProgrammeID" />
+          <ScalarProperty Name="SPassword" ColumnName="SPassword" />
+          <ScalarProperty Name="BatchID" ColumnName="BatchID" />
+          <ScalarProperty Name="CandidateID" ColumnName="CandidateID" />
+          <ScalarProperty Name="RollNumber" ColumnName="RollNumber" />
+          <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="SName" ColumnName="SName" />
+          <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StudentPoints">
+      <EntityTypeMapping TypeName="PointDBModel.StudentPoint">
+        <MappingFragment StoreEntitySet="StudentPoint">
+          <ScalarProperty Name="RegistrationDate" ColumnName="RegistrationDate" />
+          <ScalarProperty Name="SemesterID" ColumnName="SemesterID" />
+          <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+          <ScalarProperty Name="PointID" ColumnName="PointID" />
+          <ScalarProperty Name="PickUpAddress" ColumnName="PickUpAddress" />
+          <ScalarProperty Name="StudentPointId" ColumnName="StudentPointId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AdmissionTests">
+      <EntityTypeMapping TypeName="PointDBModel.AdmissionTest">
+        <MappingFragment StoreEntitySet="AdmissionTest">
+          <ScalarProperty Name="TestOpeningID" ColumnName="TestOpeningID" />
+          <ScalarProperty Name="TestDate" ColumnName="TestDate" />
+          <ScalarProperty Name="TestID" ColumnName="TestID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AffiliatedOrganizations">
+      <EntityTypeMapping TypeName="PointDBModel.AffiliatedOrganization">
+        <MappingFragment StoreEntitySet="AffiliatedOrganization">
+          <ScalarProperty Name="OrganizationName" ColumnName="OrganizationName" />
+          <ScalarProperty Name="OrganizationID" ColumnName="OrganizationID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Alumni">
+      <EntityTypeMapping TypeName="PointDBModel.Alumnus">
+        <MappingFragment StoreEntitySet="Alumni">
+          <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+          <ScalarProperty Name="AlumniID" ColumnName="AlumniID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AlumniExperiences">
+      <EntityTypeMapping TypeName="PointDBModel.AlumniExperience">
+        <MappingFragment StoreEntitySet="AlumniExperience">
+          <ScalarProperty Name="ExpID" ColumnName="ExpID" />
+          <ScalarProperty Name="AlumniID" ColumnName="AlumniID" />
+          <ScalarProperty Name="RefID" ColumnName="RefID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Answers">
+      <EntityTypeMapping TypeName="PointDBModel.Answer">
+        <MappingFragment StoreEntitySet="Answers">
+          <ScalarProperty Name="FeedbackID" ColumnName="FeedbackID" />
+          <ScalarProperty Name="QuestionId" ColumnName="QuestionId" />
+          <ScalarProperty Name="response" ColumnName="response" />
+          <ScalarProperty Name="Responsetype" ColumnName="Responsetype" />
+          <ScalarProperty Name="AnsId" ColumnName="AnsId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AppliedFors">
+      <EntityTypeMapping TypeName="PointDBModel.AppliedFor">
+        <MappingFragment StoreEntitySet="AppliedFor">
+          <ScalarProperty Name="JobID" ColumnName="JobID" />
+          <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Approvees">
+      <EntityTypeMapping TypeName="PointDBModel.Approvee">
+        <MappingFragment StoreEntitySet="Approvee">
+          <ScalarProperty Name="SemesterID" ColumnName="SemesterID" />
+          <ScalarProperty Name="EmpID" ColumnName="EmpID" />
+          <ScalarProperty Name="ApproveeID" ColumnName="ApproveeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Assignments">
+      <EntityTypeMapping TypeName="PointDBModel.Assignment">
+        <MappingFragment StoreEntitySet="Assignment">
+          <ScalarProperty Name="FSID" ColumnName="FSID" />
+          <ScalarProperty Name="ReSubmissionAllowed" ColumnName="ReSubmissionAllowed" />
+          <ScalarProperty Name="DueDateTime" ColumnName="DueDateTime" />
+          <ScalarProperty Name="AttachmentLink" ColumnName="AttachmentLink" />
+          <ScalarProperty Name="AssignmentName" ColumnName="AssignmentName" />
+          <ScalarProperty Name="AssignmentID" ColumnName="AssignmentID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Attendances">
+      <EntityTypeMapping TypeName="PointDBModel.Attendance">
+        <MappingFragment StoreEntitySet="Attendance">
+          <ScalarProperty Name="EnrollmentID" ColumnName="EnrollmentID" />
+          <ScalarProperty Name="ClassDuration" ColumnName="ClassDuration" />
+          <ScalarProperty Name="AttendanceStatus" ColumnName="AttendanceStatus" />
+          <ScalarProperty Name="AttendanceDate" ColumnName="AttendanceDate" />
+          <ScalarProperty Name="AttendanceID" ColumnName="AttendanceID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Batches">
+      <EntityTypeMapping TypeName="PointDBModel.Batch">
+        <MappingFragment StoreEntitySet="Batch">
+          <ScalarProperty Name="BatchYear" ColumnName="BatchYear" />
+          <ScalarProperty Name="BatchName" ColumnName="BatchName" />
+          <ScalarProperty Name="BatchID" ColumnName="BatchID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Books">
+      <EntityTypeMapping TypeName="PointDBModel.Book">
+        <MappingFragment StoreEntitySet="Book">
+          <ScalarProperty Name="BAuthor" ColumnName="BAuthor" />
+          <ScalarProperty Name="BPublisher" ColumnName="BPublisher" />
+          <ScalarProperty Name="BLanguage" ColumnName="BLanguage" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="ISBN" ColumnName="ISBN" />
+          <ScalarProperty Name="BookID" ColumnName="BookID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BookIssues">
+      <EntityTypeMapping TypeName="PointDBModel.BookIssue">
+        <MappingFragment StoreEntitySet="BookIssue">
+          <ScalarProperty Name="BookID" ColumnName="BookID" />
+          <ScalarProperty Name="EmpID" ColumnName="EmpID" />
+          <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+          <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+          <ScalarProperty Name="IssueDate" ColumnName="IssueDate" />
+          <ScalarProperty Name="IssueID" ColumnName="IssueID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BookReturns">
+      <EntityTypeMapping TypeName="PointDBModel.BookReturn">
+        <MappingFragment StoreEntitySet="BookReturn">
+          <ScalarProperty Name="IssueID" ColumnName="IssueID" />
+          <ScalarProperty Name="isLate" ColumnName="isLate" />
+          <ScalarProperty Name="ReturnDate" ColumnName="ReturnDate" />
+          <ScalarProperty Name="ReturnID" ColumnName="ReturnID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CafeteriaStaffs">
+      <EntityTypeMapping TypeName="PointDBModel.CafeteriaStaff">
+        <MappingFragment StoreEntitySet="CafeteriaStaff">
+          <ScalarProperty Name="SRole" ColumnName="SRole" />
+          <ScalarProperty Name="SPassword" ColumnName="SPassword" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="StaffID" ColumnName="StaffID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CandidateEmployees">
+      <EntityTypeMapping TypeName="PointDBModel.CandidateEmployee">
+        <MappingFragment StoreEntitySet="CandidateEmployee">
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="EPassword" ColumnName="EPassword" />
+          <ScalarProperty Name="Coverletterpath" ColumnName="Coverletterpath" />
+          <ScalarProperty Name="CVpath" ColumnName="CVpath" />
+          <ScalarProperty Name="ExperienceYears" ColumnName="ExperienceYears" />
+          <ScalarProperty Name="EducationLevel" ColumnName="EducationLevel" />
+          <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+          <ScalarProperty Name="EAddress" ColumnName="EAddress" />
+          <ScalarProperty Name="EName" ColumnName="EName" />
+          <ScalarProperty Name="ECandidateID" ColumnName="ECandidateID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CandidateStudents">
+      <EntityTypeMapping TypeName="PointDBModel.CandidateStudent">
+        <MappingFragment StoreEntitySet="CandidateStudent">
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="SSCResult" ColumnName="SSCResult" />
+          <ScalarProperty Name="HSCResult" ColumnName="HSCResult" />
+          <ScalarProperty Name="ContactInfo" ColumnName="ContactInfo" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="CAddress" ColumnName="CAddress" />
+          <ScalarProperty Name="CName" ColumnName="CName" />
+          <ScalarProperty Name="CandidateID" ColumnName="CandidateID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CandidateTestDetails">
+      <EntityTypeMapping TypeName="PointDBModel.CandidateTestDetail">
+        <MappingFragment StoreEntitySet="CandidateTestDetails">
+          <ScalarProperty Name="TestScore" ColumnName="TestScore" />
+          <ScalarProperty Name="AssignedTestID" ColumnName="AssignedTestID" />
+          <ScalarProperty Name="CandidateID" ColumnName="CandidateID" />
+          <ScalarProperty Name="DetailsID" ColumnName="DetailsID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ChatKeywords">
+      <EntityTypeMapping TypeName="PointDBModel.ChatKeyword">
+        <MappingFragment StoreEntitySet="ChatKeyword">
+          <ScalarProperty Name="StatusType" ColumnName="StatusType" />
+          <ScalarProperty Name="ChatWord" ColumnName="ChatWord" />
+          <ScalarProperty Name="KeywordID" ColumnName="KeywordID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ChatLogs">
+      <EntityTypeMapping TypeName="PointDBModel.ChatLog">
+        <MappingFragment StoreEntitySet="ChatLog">
+          <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+          <ScalarProperty Name="Input" ColumnName="Input" />
+          <ScalarProperty Name="Response" ColumnName="Response" />
+          <ScalarProperty Name="ChatTime" ColumnName="ChatTime" />
+          <ScalarProperty Name="ChatID" ColumnName="ChatID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Choices">
+      <EntityTypeMapping TypeName="PointDBModel.Choice">
+        <MappingFragment StoreEntitySet="Choice">
+          <ScalarProperty Name="Choice4" ColumnName="Choice4" />
+          <ScalarProperty Name="Choice3" ColumnName="Choice3" />
+          <ScalarProperty Name="Choice2" ColumnName="Choice2" />
+          <ScalarProperty Name="Choice1" ColumnName="Choice1" />
+          <ScalarProperty Name="QuestionId" ColumnName="QuestionId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ClearanceRequests">
+      <EntityTypeMapping TypeName="PointDBModel.ClearanceRequest">
+        <MappingFragment StoreEntitySet="ClearanceRequest">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+          <ScalarProperty Name="RequestDate" ColumnName="RequestDate" />
+          <ScalarProperty Name="SemesterGraduation" ColumnName="SemesterGraduation" />
+          <ScalarProperty Name="ParentCNIC2" ColumnName="ParentCNIC2" />
+          <ScalarProperty Name="ParentName2" ColumnName="ParentName2" />
+          <ScalarProperty Name="ParentCNIC1" ColumnName="ParentCNIC1" />
+          <ScalarProperty Name="ParentName1" ColumnName="ParentName1" />
+          <ScalarProperty Name="RequestID" ColumnName="RequestID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Configs">
+      <EntityTypeMapping TypeName="PointDBModel.Config">
+        <MappingFragment StoreEntitySet="Config">
+          <ScalarProperty Name="FeedbackEndDate" ColumnName="FeedbackEndDate" />
+          <ScalarProperty Name="FeedbackStartDate" ColumnName="FeedbackStartDate" />
+          <ScalarProperty Name="RegistrationEndDate" ColumnName="RegistrationEndDate" />
+          <ScalarProperty Name="RegistrationStartDate" ColumnName="RegistrationStartDate" />
+          <ScalarProperty Name="SemesterEndDate" ColumnName="SemesterEndDate" />
+          <ScalarProperty Name="SemesterStartDate" ColumnName="SemesterStartDate" />
+          <ScalarProperty Name="RegistrationStatus" ColumnName="RegistrationStatus" />
+          <ScalarProperty Name="SemesterID" ColumnName="SemesterID" />
+          <ScalarProperty Name="configID" ColumnName="configID" />
+          <ScalarProperty Name="CreditLimit" ColumnName="CreditLimit" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Courses">
+      <EntityTypeMapping TypeName="PointDBModel.Course">
+        <MappingFragment StoreEntitySet="Course">
+          <ScalarProperty Name="CourseCode" ColumnName="CourseCode" />
+          <ScalarProperty Name="CourseName" ColumnName="CourseName" />
+          <ScalarProperty Name="CourseID" ColumnName="CourseID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CourseEnrollments">
+      <EntityTypeMapping TypeName="PointDBModel.CourseEnrollment">
+        <MappingFragment StoreEntitySet="CourseEnrollment">
+          <ScalarProperty Name="CourseID" ColumnName="CourseID" />
+          <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+          <ScalarProperty Name="FSID" ColumnName="FSID" />
+          <ScalarProperty Name="IsFeedBackSubmit" ColumnName="IsFeedBackSubmit" />
+          <ScalarProperty Name="CourseStatus" ColumnName="CourseStatus" />
+          <ScalarProperty Name="EnrollmentID" ColumnName="EnrollmentID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CourseFaculties">
+      <EntityTypeMapping TypeName="PointDBModel.CourseFaculty">
+        <MappingFragment StoreEntitySet="CourseFaculty">
+          <ScalarProperty Name="EmpID" ColumnName="EmpID" />
+          <ScalarProperty Name="CourseOfferedID" ColumnName="CourseOfferedID" />
+          <ScalarProperty Name="NumberOfSection" ColumnName="NumberOfSection" />
+          <ScalarProperty Name="CFID" ColumnName="CFID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CourseFeedbacks">
+      <EntityTypeMapping TypeName="PointDBModel.CourseFeedback">
+        <MappingFragment StoreEntitySet="CourseFeedback">
+          <ScalarProperty Name="isSubmitted" ColumnName="isSubmitted" />
+          <ScalarProperty Name="EnrollmentId" ColumnName="EnrollmentId" />
+          <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+          <ScalarProperty Name="FbID" ColumnName="FbID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CourseOffereds">
+      <EntityTypeMapping TypeName="PointDBModel.CourseOffered">
+        <MappingFragment StoreEntitySet="CourseOffered">
+          <ScalarProperty Name="CourseID" ColumnName="CourseID" />
+          <ScalarProperty Name="SemesterID" ColumnName="SemesterID" />
+          <ScalarProperty Name="BatchID" ColumnName="BatchID" />
+          <ScalarProperty Name="MaxStdPerSection" ColumnName="MaxStdPerSection" />
+          <ScalarProperty Name="CourseNSections" ColumnName="CourseNSections" />
+          <ScalarProperty Name="CreditHrs" ColumnName="CreditHrs" />
+          <ScalarProperty Name="CourseOfferedID" ColumnName="CourseOfferedID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="daysofweeks">
+      <EntityTypeMapping TypeName="PointDBModel.daysofweek">
+        <MappingFragment StoreEntitySet="daysofweek">
+          <ScalarProperty Name="dayvalue" ColumnName="dayvalue" />
+          <ScalarProperty Name="dayID" ColumnName="dayID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Departments">
+      <EntityTypeMapping TypeName="PointDBModel.Department">
+        <MappingFragment StoreEntitySet="Department">
+          <ScalarProperty Name="DepartmentName" ColumnName="DepartmentName" />
+          <ScalarProperty Name="DepartmentID" ColumnName="DepartmentID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Designations">
+      <EntityTypeMapping TypeName="PointDBModel.Designation">
+        <MappingFragment StoreEntitySet="Designation">
+          <ScalarProperty Name="DesignationTitle" ColumnName="DesignationTitle" />
+          <ScalarProperty Name="DesignationID" ColumnName="DesignationID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Domains">
+      <EntityTypeMapping TypeName="PointDBModel.Domain">
+        <MappingFragment StoreEntitySet="Domain">
+          <ScalarProperty Name="DomainName" ColumnName="DomainName" />
+          <ScalarProperty Name="DomainID" ColumnName="DomainID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ECandidateApplications">
+      <EntityTypeMapping TypeName="PointDBModel.ECandidateApplication">
+        <MappingFragment StoreEntitySet="ECandidateApplication">
+          <ScalarProperty Name="TestDate" ColumnName="TestDate" />
+          <ScalarProperty Name="JobID" ColumnName="JobID" />
+          <ScalarProperty Name="ECandidateID" ColumnName="ECandidateID" />
+          <ScalarProperty Name="ApplyDate" ColumnName="ApplyDate" />
+          <ScalarProperty Name="QualifiedStatus" ColumnName="QualifiedStatus" />
+          <ScalarProperty Name="RefID" ColumnName="RefID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Employees">
+      <EntityTypeMapping TypeName="PointDBModel.Employee">
+        <MappingFragment StoreEntitySet="Employee">
+          <ScalarProperty Name="RefID" ColumnName="RefID" />
+          <ScalarProperty Name="DepartmentID" ColumnName="DepartmentID" />
+          <ScalarProperty Name="DesignationID" ColumnName="DesignationID" />
+          <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="EmpName" ColumnName="EmpName" />
+          <ScalarProperty Name="EmpID" ColumnName="EmpID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FacultySections">
+      <EntityTypeMapping TypeName="PointDBModel.FacultySection">
+        <MappingFragment StoreEntitySet="FacultySections">
+          <ScalarProperty Name="SectionID" ColumnName="SectionID" />
+          <ScalarProperty Name="CFID" ColumnName="CFID" />
+          <ScalarProperty Name="FSID" ColumnName="FSID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Feedbacks">
+      <EntityTypeMapping TypeName="PointDBModel.Feedback">
+        <MappingFragment StoreEntitySet="Feedback">
+          <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+          <ScalarProperty Name="Rating" ColumnName="Rating" />
+          <ScalarProperty Name="FDescription" ColumnName="FDescription" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="FbID" ColumnName="FbID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FoodItems">
+      <EntityTypeMapping TypeName="PointDBModel.FoodItem">
+        <MappingFragment StoreEntitySet="FoodItem">
+          <ScalarProperty Name="filepath" ColumnName="filepath" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="IDescription" ColumnName="IDescription" />
+          <ScalarProperty Name="ItemStatus" ColumnName="ItemStatus" />
+          <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+          <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FoodOrders">
+      <EntityTypeMapping TypeName="PointDBModel.FoodOrder">
+        <MappingFragment StoreEntitySet="FoodOrder">
+          <ScalarProperty Name="OrderTime" ColumnName="OrderTime" />
+          <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+          <ScalarProperty Name="PaymentMethod" ColumnName="PaymentMethod" />
+          <ScalarProperty Name="OrderStatus" ColumnName="OrderStatus" />
+          <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FrameworkLanguages">
+      <EntityTypeMapping TypeName="PointDBModel.FrameworkLanguage">
+        <MappingFragment StoreEntitySet="FrameworkLanguage">
+          <ScalarProperty Name="FName" ColumnName="FName" />
+          <ScalarProperty Name="FID" ColumnName="FID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Fyps">
+      <EntityTypeMapping TypeName="PointDBModel.Fyp">
+        <MappingFragment StoreEntitySet="Fyp">
+          <ScalarProperty Name="SuperVisorEmpID" ColumnName="SuperVisorEmpID" />
+          <ScalarProperty Name="FypDescription" ColumnName="FypDescription" />
+          <ScalarProperty Name="CoSuperVisorID" ColumnName="CoSuperVisorID" />
+          <ScalarProperty Name="ProjectType" ColumnName="ProjectType" />
+          <ScalarProperty Name="ProjectName" ColumnName="ProjectName" />
+          <ScalarProperty Name="FypID" ColumnName="FypID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FypForms">
+      <EntityTypeMapping TypeName="PointDBModel.FypForm">
+        <MappingFragment StoreEntitySet="FypForms">
+          <ScalarProperty Name="FormName" ColumnName="FormName" />
+          <ScalarProperty Name="FormID" ColumnName="FormID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FypProposals">
+      <EntityTypeMapping TypeName="PointDBModel.FypProposal">
+        <MappingFragment StoreEntitySet="FypProposal">
+          <ScalarProperty Name="Member2ID" ColumnName="Member2ID" />
+          <ScalarProperty Name="Member1ID" ColumnName="Member1ID" />
+          <ScalarProperty Name="LeaderID" ColumnName="LeaderID" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+          <ScalarProperty Name="CoSupervisorID" ColumnName="CoSupervisorID" />
+          <ScalarProperty Name="SupervisorID" ColumnName="SupervisorID" />
+          <ScalarProperty Name="Abstract" ColumnName="Abstract" />
+          <ScalarProperty Name="ProjectType" ColumnName="ProjectType" />
+          <ScalarProperty Name="ProjectTitle" ColumnName="ProjectTitle" />
+          <ScalarProperty Name="ProposalID" ColumnName="ProposalID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Jobs">
+      <EntityTypeMapping TypeName="PointDBModel.Job">
+        <MappingFragment StoreEntitySet="Job">
+          <ScalarProperty Name="Contactperson" ColumnName="Contactperson" />
+          <ScalarProperty Name="ApplicationLink" ColumnName="ApplicationLink" />
+          <ScalarProperty Name="Attachmentpath" ColumnName="Attachmentpath" />
+          <ScalarProperty Name="MinExperience" ColumnName="MinExperience" />
+          <ScalarProperty Name="Designation" ColumnName="Designation" />
+          <ScalarProperty Name="LastApplyDate" ColumnName="LastApplyDate" />
+          <ScalarProperty Name="Organization" ColumnName="Organization" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="JobID" ColumnName="JobID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="JobDescriptions">
+      <EntityTypeMapping TypeName="PointDBModel.JobDescription">
+        <MappingFragment StoreEntitySet="JobDescription">
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="JobID" ColumnName="JobID" />
+          <ScalarProperty Name="DescID" ColumnName="DescID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="JobOpenings">
+      <EntityTypeMapping TypeName="PointDBModel.JobOpening">
+        <MappingFragment StoreEntitySet="JobOpening">
+          <ScalarProperty Name="DepartmentID" ColumnName="DepartmentID" />
+          <ScalarProperty Name="DesignationID" ColumnName="DesignationID" />
+          <ScalarProperty Name="ExpectedStartDate" ColumnName="ExpectedStartDate" />
+          <ScalarProperty Name="DatePosted" ColumnName="DatePosted" />
+          <ScalarProperty Name="JobDescription" ColumnName="JobDescription" />
+          <ScalarProperty Name="MinExperience" ColumnName="MinExperience" />
+          <ScalarProperty Name="JobID" ColumnName="JobID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="JobTags">
+      <EntityTypeMapping TypeName="PointDBModel.JobTag">
+        <MappingFragment StoreEntitySet="JobTag">
+          <ScalarProperty Name="TagName" ColumnName="TagName" />
+          <ScalarProperty Name="JobID" ColumnName="JobID" />
+          <ScalarProperty Name="JobTagID" ColumnName="JobTagID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MarksDistributions">
+      <EntityTypeMapping TypeName="PointDBModel.MarksDistribution">
+        <MappingFragment StoreEntitySet="MarksDistribution">
+          <ScalarProperty Name="FSID" ColumnName="FSID" />
+          <ScalarProperty Name="TotalMarks" ColumnName="TotalMarks" />
+          <ScalarProperty Name="Weigtage" ColumnName="Weigtage" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="MDID" ColumnName="MDID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MarksRecords">
+      <EntityTypeMapping TypeName="PointDBModel.MarksRecord">
+        <MappingFragment StoreEntitySet="MarksRecord">
+          <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+          <ScalarProperty Name="MDID" ColumnName="MDID" />
+          <ScalarProperty Name="MarksID" ColumnName="MarksID" />
+          <ScalarProperty Name="ObtainedMarks" ColumnName="ObtainedMarks" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="options">
+      <EntityTypeMapping TypeName="PointDBModel.option">
+        <MappingFragment StoreEntitySet="options">
+          <ScalarProperty Name="Opt" ColumnName="Opt" />
+          <ScalarProperty Name="QuestionID" ColumnName="QuestionID" />
+          <ScalarProperty Name="OptionsId" ColumnName="OptionsId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Patterns">
+      <EntityTypeMapping TypeName="PointDBModel.Pattern">
+        <MappingFragment StoreEntitySet="Pattern">
+          <ScalarProperty Name="KeywordID" ColumnName="KeywordID" />
+          <ScalarProperty Name="PatternName" ColumnName="PatternName" />
+          <ScalarProperty Name="PatternID" ColumnName="PatternID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Payments">
+      <EntityTypeMapping TypeName="PointDBModel.Payment">
+        <MappingFragment StoreEntitySet="Payment">
+          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+          <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+          <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
+          <ScalarProperty Name="PaymentID" ColumnName="PaymentID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Penalties">
+      <EntityTypeMapping TypeName="PointDBModel.Penalty">
+        <MappingFragment StoreEntitySet="Penalty">
+          <ScalarProperty Name="ReturnID" ColumnName="ReturnID" />
+          <ScalarProperty Name="IssueID" ColumnName="IssueID" />
+          <ScalarProperty Name="PenaltyID" ColumnName="PenaltyID" />
+          <ScalarProperty Name="Rate" ColumnName="Rate" />
+          <ScalarProperty Name="NumberofDaysLate" ColumnName="NumberofDaysLate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Programmes">
+      <EntityTypeMapping TypeName="PointDBModel.Programme">
+        <MappingFragment StoreEntitySet="Programme">
+          <ScalarProperty Name="DepartmentID" ColumnName="DepartmentID" />
+          <ScalarProperty Name="ProgrammeName" ColumnName="ProgrammeName" />
+          <ScalarProperty Name="ProgrammeID" ColumnName="ProgrammeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProjectFrameworks">
+      <EntityTypeMapping TypeName="PointDBModel.ProjectFramework">
+        <MappingFragment StoreEntitySet="ProjectFramework">
+          <ScalarProperty Name="FID" ColumnName="FID" />
+          <ScalarProperty Name="projectID" ColumnName="projectID" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProjectSkills">
+      <EntityTypeMapping TypeName="PointDBModel.ProjectSkill">
+        <MappingFragment StoreEntitySet="ProjectSkills">
+          <ScalarProperty Name="SkillID" ColumnName="SkillID" />
+          <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+          <ScalarProperty Name="ApproveStatus" ColumnName="ApproveStatus" />
+          <ScalarProperty Name="PSID" ColumnName="PSID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Questions">
+      <EntityTypeMapping TypeName="PointDBModel.Question">
+        <MappingFragment StoreEntitySet="Question">
+          <ScalarProperty Name="QuestionType" ColumnName="QuestionType" />
+          <ScalarProperty Name="CourseType" ColumnName="CourseType" />
+          <ScalarProperty Name="Question1" ColumnName="Question" />
+          <ScalarProperty Name="QuestionID" ColumnName="QuestionID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RecruitmentExams">
+      <EntityTypeMapping TypeName="PointDBModel.RecruitmentExam">
+        <MappingFragment StoreEntitySet="RecruitmentExam">
+          <ScalarProperty Name="JobID" ColumnName="JobID" />
+          <ScalarProperty Name="Degree" ColumnName="Degree" />
+          <ScalarProperty Name="ExamId" ColumnName="ExamId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RecruitmentQuestions">
+      <EntityTypeMapping TypeName="PointDBModel.RecruitmentQuestion">
+        <MappingFragment StoreEntitySet="RecruitmentQuestion">
+          <ScalarProperty Name="ExamId" ColumnName="ExamId" />
+          <ScalarProperty Name="CorrectAnswer" ColumnName="CorrectAnswer" />
+          <ScalarProperty Name="QuestionText" ColumnName="QuestionText" />
+          <ScalarProperty Name="QuestionId" ColumnName="QuestionId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Results">
+      <EntityTypeMapping TypeName="PointDBModel.Result">
+        <MappingFragment StoreEntitySet="Result">
+          <ScalarProperty Name="ExamId" ColumnName="ExamId" />
+          <ScalarProperty Name="RefId" ColumnName="RefId" />
+          <ScalarProperty Name="CorrectQuestions" ColumnName="CorrectQuestions" />
+          <ScalarProperty Name="AttemptedQuestions" ColumnName="AttemptedQuestions" />
+          <ScalarProperty Name="ResultId" ColumnName="ResultId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Rooms">
+      <EntityTypeMapping TypeName="PointDBModel.Room">
+        <MappingFragment StoreEntitySet="Rooms">
+          <ScalarProperty Name="Roomname" ColumnName="Roomname" />
+          <ScalarProperty Name="RoomID" ColumnName="RoomID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SCandidateApplications">
+      <EntityTypeMapping TypeName="PointDBModel.SCandidateApplication">
+        <MappingFragment StoreEntitySet="SCandidateApplication">
+          <ScalarProperty Name="SOpeningID" ColumnName="SOpeningID" />
+          <ScalarProperty Name="CandidateID" ColumnName="CandidateID" />
+          <ScalarProperty Name="ApplyDate" ColumnName="ApplyDate" />
+          <ScalarProperty Name="QualifiedStatus" ColumnName="QualifiedStatus" />
+          <ScalarProperty Name="RefID" ColumnName="RefID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sections">
+      <EntityTypeMapping TypeName="PointDBModel.Section">
+        <MappingFragment StoreEntitySet="Section">
+          <ScalarProperty Name="BatchID" ColumnName="BatchID" />
+          <ScalarProperty Name="SectionName" ColumnName="SectionName" />
+          <ScalarProperty Name="SectionID" ColumnName="SectionID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Skills">
+      <EntityTypeMapping TypeName="PointDBModel.Skill">
+        <MappingFragment StoreEntitySet="Skill">
+          <ScalarProperty Name="DomainID" ColumnName="DomainID" />
+          <ScalarProperty Name="SkillName" ColumnName="SkillName" />
+          <ScalarProperty Name="SkillID" ColumnName="SkillID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="STransactions">
+      <EntityTypeMapping TypeName="PointDBModel.STransaction">
+        <MappingFragment StoreEntitySet="STransaction">
+          <ScalarProperty Name="TypeID" ColumnName="TypeID" />
+          <ScalarProperty Name="WalletID" ColumnName="WalletID" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="TransactionDate" ColumnName="TransactionDate" />
+          <ScalarProperty Name="TransactionID" ColumnName="TransactionID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StudentExperiences">
+      <EntityTypeMapping TypeName="PointDBModel.StudentExperience">
+        <MappingFragment StoreEntitySet="StudentExperience">
+          <ScalarProperty Name="OrganizationID" ColumnName="OrganizationID" />
+          <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+          <ScalarProperty Name="JDescription" ColumnName="JDescription" />
+          <ScalarProperty Name="Designation" ColumnName="Designation" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="ExpID" ColumnName="ExpID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StudentOpenings">
+      <EntityTypeMapping TypeName="PointDBModel.StudentOpening">
+        <MappingFragment StoreEntitySet="StudentOpening">
+          <ScalarProperty Name="ProgrammeID" ColumnName="ProgrammeID" />
+          <ScalarProperty Name="LastApplicationDate" ColumnName="LastApplicationDate" />
+          <ScalarProperty Name="MaxSeats" ColumnName="MaxSeats" />
+          <ScalarProperty Name="SYear" ColumnName="SYear" />
+          <ScalarProperty Name="SOpeningID" ColumnName="SOpeningID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StudentProjects">
+      <EntityTypeMapping TypeName="PointDBModel.StudentProject">
+        <MappingFragment StoreEntitySet="StudentProject">
+          <ScalarProperty Name="CourseOfferedID" ColumnName="CourseOfferedID" />
+          <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+          <ScalarProperty Name="GitHubLink" ColumnName="GitHubLink" />
+          <ScalarProperty Name="ProjectName" ColumnName="ProjectName" />
+          <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StudentSkills">
+      <EntityTypeMapping TypeName="PointDBModel.StudentSkill">
+        <MappingFragment StoreEntitySet="StudentSkills">
+          <ScalarProperty Name="SkillID" ColumnName="SkillID" />
+          <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+          <ScalarProperty Name="RefID" ColumnName="RefID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="PointDBModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="definition" ColumnName="definition" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Timeslots">
+      <EntityTypeMapping TypeName="PointDBModel.Timeslot">
+        <MappingFragment StoreEntitySet="Timeslot">
+          <ScalarProperty Name="Slot" ColumnName="Slot" />
+          <ScalarProperty Name="TimeslotID" ColumnName="TimeslotID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Timetables">
+      <EntityTypeMapping TypeName="PointDBModel.Timetable">
+        <MappingFragment StoreEntitySet="Timetable">
+          <ScalarProperty Name="timeslotID" ColumnName="timeslotID" />
+          <ScalarProperty Name="roomID" ColumnName="roomID" />
+          <ScalarProperty Name="batchID" ColumnName="batchID" />
+          <ScalarProperty Name="sectionID" ColumnName="sectionID" />
+          <ScalarProperty Name="courseID" ColumnName="courseID" />
+          <ScalarProperty Name="dayID" ColumnName="dayID" />
+          <ScalarProperty Name="empID" ColumnName="empID" />
+          <ScalarProperty Name="timetableID" ColumnName="timetableID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TransactionTypes">
+      <EntityTypeMapping TypeName="PointDBModel.TransactionType">
+        <MappingFragment StoreEntitySet="TransactionType">
+          <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+          <ScalarProperty Name="TypeID" ColumnName="TypeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Wallets">
+      <EntityTypeMapping TypeName="PointDBModel.Wallet">
+        <MappingFragment StoreEntitySet="Wallet">
+          <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+          <ScalarProperty Name="Balance" ColumnName="Balance" />
+          <ScalarProperty Name="WalletID" ColumnName="WalletID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AlumniSkills">
+      <EntityTypeMapping TypeName="PointDBModel.AlumniSkill">
+        <MappingFragment StoreEntitySet="AlumniSkill">
+          <ScalarProperty Name="SkillID" ColumnName="SkillID" />
+          <ScalarProperty Name="RefID" ColumnName="RefID" />
+          <ScalarProperty Name="AlumniID" ColumnName="AlumniID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ChatHistories">
+      <EntityTypeMapping TypeName="PointDBModel.ChatHistory">
+        <MappingFragment StoreEntitySet="ChatHistory">
+          <ScalarProperty Name="ChatID" ColumnName="ChatID" />
+          <ScalarProperty Name="HistID" ColumnName="HistID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FypConfigs">
+      <EntityTypeMapping TypeName="PointDBModel.FypConfig">
+        <MappingFragment StoreEntitySet="FypConfig">
+          <ScalarProperty Name="MinStudent" ColumnName="MinStudent" />
+          <ScalarProperty Name="MaxStudent" ColumnName="MaxStudent" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FypEvaluations">
+      <EntityTypeMapping TypeName="PointDBModel.FypEvaluation">
+        <MappingFragment StoreEntitySet="FypEvaluation">
+          <ScalarProperty Name="ProgressComments" ColumnName="ProgressComments" />
+          <ScalarProperty Name="DocumentationStatus" ColumnName="DocumentationStatus" />
+          <ScalarProperty Name="ProjectProgress" ColumnName="ProjectProgress" />
+          <ScalarProperty Name="Fyp2Deliverables" ColumnName="Fyp2Deliverables" />
+          <ScalarProperty Name="Deliverable5Completion" ColumnName="Deliverable5Completion" />
+          <ScalarProperty Name="Deliverable4Completion" ColumnName="Deliverable4Completion" />
+          <ScalarProperty Name="Deliverable3Completion" ColumnName="Deliverable3Completion" />
+          <ScalarProperty Name="Deliverable2Completion" ColumnName="Deliverable2Completion" />
+          <ScalarProperty Name="Deliverable1Completion" ColumnName="Deliverable1Completion" />
+          <ScalarProperty Name="DefenceStatus" ColumnName="DefenceStatus" />
+          <ScalarProperty Name="ChangesRecommeneded" ColumnName="ChangesRecommeneded" />
+          <ScalarProperty Name="Deliverables5" ColumnName="Deliverables5" />
+          <ScalarProperty Name="Deliverables4" ColumnName="Deliverables4" />
+          <ScalarProperty Name="Deliverables3" ColumnName="Deliverables3" />
+          <ScalarProperty Name="Deliverables2" ColumnName="Deliverables2" />
+          <ScalarProperty Name="Deliverables1" ColumnName="Deliverables1" />
+          <ScalarProperty Name="Criteria5Marks" ColumnName="Criteria5Marks" />
+          <ScalarProperty Name="Criteria4Marks" ColumnName="Criteria4Marks" />
+          <ScalarProperty Name="Criteria3Marks" ColumnName="Criteria3Marks" />
+          <ScalarProperty Name="Criteria2Marks" ColumnName="Criteria2Marks" />
+          <ScalarProperty Name="Criteria1Marks" ColumnName="Criteria1Marks" />
+          <ScalarProperty Name="FormID" ColumnName="FormID" />
+          <ScalarProperty Name="FypID" ColumnName="FypID" />
+          <ScalarProperty Name="EvaluationID" ColumnName="EvaluationID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FypExternalJuryies">
+      <EntityTypeMapping TypeName="PointDBModel.FypExternalJuryy">
+        <MappingFragment StoreEntitySet="FypExternalJuryy">
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FypJuries">
+      <EntityTypeMapping TypeName="PointDBModel.FypJury">
+        <MappingFragment StoreEntitySet="FypJury">
+          <ScalarProperty Name="EmpID" ColumnName="EmpID" />
+          <ScalarProperty Name="FypID" ColumnName="FypID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FypMarks">
+      <EntityTypeMapping TypeName="PointDBModel.FypMark">
+        <MappingFragment StoreEntitySet="FypMarks">
+          <ScalarProperty Name="Marks" ColumnName="Marks" />
+          <ScalarProperty Name="FormID" ColumnName="FormID" />
+          <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FypMembers">
+      <EntityTypeMapping TypeName="PointDBModel.FypMember">
+        <MappingFragment StoreEntitySet="FypMembers">
+          <ScalarProperty Name="Member2ID" ColumnName="Member2ID" />
+          <ScalarProperty Name="Member1ID" ColumnName="Member1ID" />
+          <ScalarProperty Name="LeaderID" ColumnName="LeaderID" />
+          <ScalarProperty Name="FypID" ColumnName="FypID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrderDetails">
+      <EntityTypeMapping TypeName="PointDBModel.OrderDetail">
+        <MappingFragment StoreEntitySet="OrderDetails">
+          <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="ODID" ColumnName="ODID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RequestApprovals">
+      <EntityTypeMapping TypeName="PointDBModel.RequestApproval">
+        <MappingFragment StoreEntitySet="RequestApproval">
+          <ScalarProperty Name="RequestID" ColumnName="RequestID" />
+          <ScalarProperty Name="EmpID" ColumnName="EmpID" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="RequestDate" ColumnName="RequestDate" />
+          <ScalarProperty Name="RequestStatus" ColumnName="RequestStatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StudentAssignments">
+      <EntityTypeMapping TypeName="PointDBModel.StudentAssignment">
+        <MappingFragment StoreEntitySet="StudentAssignment">
+          <ScalarProperty Name="AssignmentID" ColumnName="AssignmentID" />
+          <ScalarProperty Name="EnrollmentID" ColumnName="EnrollmentID" />
+          <ScalarProperty Name="SubmissionDateTime" ColumnName="SubmissionDateTime" />
+          <ScalarProperty Name="AttachmentLink" ColumnName="AttachmentLink" />
+          <ScalarProperty Name="ObtainedWeightage" ColumnName="ObtainedWeightage" />
+          <ScalarProperty Name="ObtainedMarks" ColumnName="ObtainedMarks" />
+          <ScalarProperty Name="SubmissionID" ColumnName="SubmissionID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

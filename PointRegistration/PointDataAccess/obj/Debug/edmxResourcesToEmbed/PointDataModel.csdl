@@ -1,0 +1,1970 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PointDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="PointDBEntities" annotation:LazyLoadingEnabled="true">
+    <FunctionImport Name="GetStudentProfile" ReturnType="Collection(PointDBModel.GetStudentProfile_Result)">
+      <Parameter Name="StdID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(PointDBModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(PointDBModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+    <EntitySet Name="Drivers" EntityType="PointDBModel.Driver" />
+    <EntitySet Name="Points" EntityType="PointDBModel.Point" />
+    <EntitySet Name="PointFees" EntityType="PointDBModel.PointFee" />
+    <EntitySet Name="PointPayments" EntityType="PointDBModel.PointPayment" />
+    <EntitySet Name="Routes" EntityType="PointDBModel.Route" />
+    <EntitySet Name="Semesters" EntityType="PointDBModel.Semester" />
+    <EntitySet Name="Students" EntityType="PointDBModel.Student" />
+    <EntitySet Name="StudentPoints" EntityType="PointDBModel.StudentPoint" />
+    <AssociationSet Name="FK_Driver_Point_CNIC" Association="PointDBModel.FK_Driver_Point_CNIC">
+      <End Role="Driver" EntitySet="Drivers" />
+      <End Role="Point" EntitySet="Points" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Point_Route_PointID" Association="PointDBModel.FK_Point_Route_PointID">
+      <End Role="Point" EntitySet="Points" />
+      <End Role="Route" EntitySet="Routes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Point_StudentPoint_PointID" Association="PointDBModel.FK_Point_StudentPoint_PointID">
+      <End Role="Point" EntitySet="Points" />
+      <End Role="StudentPoint" EntitySet="StudentPoints" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PointFee_PointPayment_FeeID" Association="PointDBModel.FK_PointFee_PointPayment_FeeID">
+      <End Role="PointFee" EntitySet="PointFees" />
+      <End Role="PointPayment" EntitySet="PointPayments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Semester_PointFee_SemesterID" Association="PointDBModel.FK_Semester_PointFee_SemesterID">
+      <End Role="Semester" EntitySet="Semesters" />
+      <End Role="PointFee" EntitySet="PointFees" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Student_PointPayment_StudentID" Association="PointDBModel.FK_Student_PointPayment_StudentID">
+      <End Role="Student" EntitySet="Students" />
+      <End Role="PointPayment" EntitySet="PointPayments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Semester_StudentPoint_SemesterID" Association="PointDBModel.FK_Semester_StudentPoint_SemesterID">
+      <End Role="Semester" EntitySet="Semesters" />
+      <End Role="StudentPoint" EntitySet="StudentPoints" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Student_StudentPoint_StudentID" Association="PointDBModel.FK_Student_StudentPoint_StudentID">
+      <End Role="Student" EntitySet="Students" />
+      <End Role="StudentPoint" EntitySet="StudentPoints" />
+    </AssociationSet>
+    <EntitySet Name="AdmissionTests" EntityType="PointDBModel.AdmissionTest" />
+    <EntitySet Name="AffiliatedOrganizations" EntityType="PointDBModel.AffiliatedOrganization" />
+    <EntitySet Name="Alumni" EntityType="PointDBModel.Alumnus" />
+    <EntitySet Name="AlumniExperiences" EntityType="PointDBModel.AlumniExperience" />
+    <EntitySet Name="Answers" EntityType="PointDBModel.Answer" />
+    <EntitySet Name="AppliedFors" EntityType="PointDBModel.AppliedFor" />
+    <EntitySet Name="Approvees" EntityType="PointDBModel.Approvee" />
+    <EntitySet Name="Assignments" EntityType="PointDBModel.Assignment" />
+    <EntitySet Name="Attendances" EntityType="PointDBModel.Attendance" />
+    <EntitySet Name="Batches" EntityType="PointDBModel.Batch" />
+    <EntitySet Name="Books" EntityType="PointDBModel.Book" />
+    <EntitySet Name="BookIssues" EntityType="PointDBModel.BookIssue" />
+    <EntitySet Name="BookReturns" EntityType="PointDBModel.BookReturn" />
+    <EntitySet Name="CafeteriaStaffs" EntityType="PointDBModel.CafeteriaStaff" />
+    <EntitySet Name="CandidateEmployees" EntityType="PointDBModel.CandidateEmployee" />
+    <EntitySet Name="CandidateStudents" EntityType="PointDBModel.CandidateStudent" />
+    <EntitySet Name="CandidateTestDetails" EntityType="PointDBModel.CandidateTestDetail" />
+    <EntitySet Name="ChatKeywords" EntityType="PointDBModel.ChatKeyword" />
+    <EntitySet Name="ChatLogs" EntityType="PointDBModel.ChatLog" />
+    <EntitySet Name="Choices" EntityType="PointDBModel.Choice" />
+    <EntitySet Name="ClearanceRequests" EntityType="PointDBModel.ClearanceRequest" />
+    <EntitySet Name="Configs" EntityType="PointDBModel.Config" />
+    <EntitySet Name="Courses" EntityType="PointDBModel.Course" />
+    <EntitySet Name="CourseEnrollments" EntityType="PointDBModel.CourseEnrollment" />
+    <EntitySet Name="CourseFaculties" EntityType="PointDBModel.CourseFaculty" />
+    <EntitySet Name="CourseFeedbacks" EntityType="PointDBModel.CourseFeedback" />
+    <EntitySet Name="CourseOffereds" EntityType="PointDBModel.CourseOffered" />
+    <EntitySet Name="daysofweeks" EntityType="PointDBModel.daysofweek" />
+    <EntitySet Name="Departments" EntityType="PointDBModel.Department" />
+    <EntitySet Name="Designations" EntityType="PointDBModel.Designation" />
+    <EntitySet Name="Domains" EntityType="PointDBModel.Domain" />
+    <EntitySet Name="ECandidateApplications" EntityType="PointDBModel.ECandidateApplication" />
+    <EntitySet Name="Employees" EntityType="PointDBModel.Employee" />
+    <EntitySet Name="FacultySections" EntityType="PointDBModel.FacultySection" />
+    <EntitySet Name="Feedbacks" EntityType="PointDBModel.Feedback" />
+    <EntitySet Name="FoodItems" EntityType="PointDBModel.FoodItem" />
+    <EntitySet Name="FoodOrders" EntityType="PointDBModel.FoodOrder" />
+    <EntitySet Name="FrameworkLanguages" EntityType="PointDBModel.FrameworkLanguage" />
+    <EntitySet Name="Fyps" EntityType="PointDBModel.Fyp" />
+    <EntitySet Name="FypForms" EntityType="PointDBModel.FypForm" />
+    <EntitySet Name="FypProposals" EntityType="PointDBModel.FypProposal" />
+    <EntitySet Name="Jobs" EntityType="PointDBModel.Job" />
+    <EntitySet Name="JobDescriptions" EntityType="PointDBModel.JobDescription" />
+    <EntitySet Name="JobOpenings" EntityType="PointDBModel.JobOpening" />
+    <EntitySet Name="JobTags" EntityType="PointDBModel.JobTag" />
+    <EntitySet Name="MarksDistributions" EntityType="PointDBModel.MarksDistribution" />
+    <EntitySet Name="MarksRecords" EntityType="PointDBModel.MarksRecord" />
+    <EntitySet Name="options" EntityType="PointDBModel.option" />
+    <EntitySet Name="Patterns" EntityType="PointDBModel.Pattern" />
+    <EntitySet Name="Payments" EntityType="PointDBModel.Payment" />
+    <EntitySet Name="Penalties" EntityType="PointDBModel.Penalty" />
+    <EntitySet Name="Programmes" EntityType="PointDBModel.Programme" />
+    <EntitySet Name="ProjectFrameworks" EntityType="PointDBModel.ProjectFramework" />
+    <EntitySet Name="ProjectSkills" EntityType="PointDBModel.ProjectSkill" />
+    <EntitySet Name="Questions" EntityType="PointDBModel.Question" />
+    <EntitySet Name="RecruitmentExams" EntityType="PointDBModel.RecruitmentExam" />
+    <EntitySet Name="RecruitmentQuestions" EntityType="PointDBModel.RecruitmentQuestion" />
+    <EntitySet Name="Results" EntityType="PointDBModel.Result" />
+    <EntitySet Name="Rooms" EntityType="PointDBModel.Room" />
+    <EntitySet Name="SCandidateApplications" EntityType="PointDBModel.SCandidateApplication" />
+    <EntitySet Name="Sections" EntityType="PointDBModel.Section" />
+    <EntitySet Name="Skills" EntityType="PointDBModel.Skill" />
+    <EntitySet Name="STransactions" EntityType="PointDBModel.STransaction" />
+    <EntitySet Name="StudentExperiences" EntityType="PointDBModel.StudentExperience" />
+    <EntitySet Name="StudentOpenings" EntityType="PointDBModel.StudentOpening" />
+    <EntitySet Name="StudentProjects" EntityType="PointDBModel.StudentProject" />
+    <EntitySet Name="StudentSkills" EntityType="PointDBModel.StudentSkill" />
+    <EntitySet Name="sysdiagrams" EntityType="PointDBModel.sysdiagram" />
+    <EntitySet Name="Timeslots" EntityType="PointDBModel.Timeslot" />
+    <EntitySet Name="Timetables" EntityType="PointDBModel.Timetable" />
+    <EntitySet Name="TransactionTypes" EntityType="PointDBModel.TransactionType" />
+    <EntitySet Name="Wallets" EntityType="PointDBModel.Wallet" />
+    <EntitySet Name="AlumniSkills" EntityType="PointDBModel.AlumniSkill" />
+    <EntitySet Name="ChatHistories" EntityType="PointDBModel.ChatHistory" />
+    <EntitySet Name="FypConfigs" EntityType="PointDBModel.FypConfig" />
+    <EntitySet Name="FypEvaluations" EntityType="PointDBModel.FypEvaluation" />
+    <EntitySet Name="FypExternalJuryies" EntityType="PointDBModel.FypExternalJuryy" />
+    <EntitySet Name="FypJuries" EntityType="PointDBModel.FypJury" />
+    <EntitySet Name="FypMarks" EntityType="PointDBModel.FypMark" />
+    <EntitySet Name="FypMembers" EntityType="PointDBModel.FypMember" />
+    <EntitySet Name="OrderDetails" EntityType="PointDBModel.OrderDetail" />
+    <EntitySet Name="RequestApprovals" EntityType="PointDBModel.RequestApproval" />
+    <EntitySet Name="StudentAssignments" EntityType="PointDBModel.StudentAssignment" />
+    <AssociationSet Name="FK__AppliedFo__JobID__66EA454A" Association="PointDBModel.FK__AppliedFo__JobID__66EA454A">
+      <End Role="Job" EntitySet="Jobs" />
+      <End Role="AppliedFor" EntitySet="AppliedFors" />
+    </AssociationSet>
+    <AssociationSet Name="FK__AppliedFo__Stude__65F62111" Association="PointDBModel.FK__AppliedFo__Stude__65F62111">
+      <End Role="Student" EntitySet="Students" />
+      <End Role="AppliedFor" EntitySet="AppliedFors" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Assignment__FSID__084B3915" Association="PointDBModel.FK__Assignment__FSID__084B3915">
+      <End Role="FacultySection" EntitySet="FacultySections" />
+      <End Role="Assignment" EntitySet="Assignments" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Assignment__FSID__26CFC035" Association="PointDBModel.FK__Assignment__FSID__26CFC035">
+      <End Role="FacultySection" EntitySet="FacultySections" />
+      <End Role="Assignment" EntitySet="Assignments" />
+    </AssociationSet>
+    <AssociationSet Name="FK__StudentAs__Assig__093F5D4E" Association="PointDBModel.FK__StudentAs__Assig__093F5D4E">
+      <End Role="Assignment" EntitySet="Assignments" />
+      <End Role="StudentAssignment" EntitySet="StudentAssignments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Attendance_CourseEnrollment" Association="PointDBModel.FK_Attendance_CourseEnrollment">
+      <End Role="CourseEnrollment" EntitySet="CourseEnrollments" />
+      <End Role="Attendance" EntitySet="Attendances" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CourseOff__Batch__00AA174D" Association="PointDBModel.FK__CourseOff__Batch__00AA174D">
+      <End Role="Batch" EntitySet="Batches" />
+      <End Role="CourseOffered" EntitySet="CourseOffereds" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CourseOff__Batch__1F2E9E6D" Association="PointDBModel.FK__CourseOff__Batch__1F2E9E6D">
+      <End Role="Batch" EntitySet="Batches" />
+      <End Role="CourseOffered" EntitySet="CourseOffereds" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Section__BatchID__2E70E1FD" Association="PointDBModel.FK__Section__BatchID__2E70E1FD">
+      <End Role="Batch" EntitySet="Batches" />
+      <End Role="Section" EntitySet="Sections" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Student__BatchID__2F650636" Association="PointDBModel.FK__Student__BatchID__2F650636">
+      <End Role="Batch" EntitySet="Batches" />
+      <End Role="Student" EntitySet="Students" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Timetable__batch__7B264821" Association="PointDBModel.FK__Timetable__batch__7B264821">
+      <End Role="Batch" EntitySet="Batches" />
+      <End Role="Timetable" EntitySet="Timetables" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Student__Candida__314D4EA8" Association="PointDBModel.FK__Student__Candida__314D4EA8">
+      <End Role="CandidateStudent" EntitySet="CandidateStudents" />
+      <End Role="Student" EntitySet="Students" />
+    </AssociationSet>
+    <AssociationSet Name="Config_FK" Association="PointDBModel.Config_FK">
+      <End Role="Semester" EntitySet="Semesters" />
+      <End Role="Config" EntitySet="Configs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CourseEnr__Cours__0D0FEE32" Association="PointDBModel.FK__CourseEnr__Cours__0D0FEE32">
+      <End Role="Course" EntitySet="Courses" />
+      <End Role="CourseEnrollment" EntitySet="CourseEnrollments" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CourseEnr__Cours__2B947552" Association="PointDBModel.FK__CourseEnr__Cours__2B947552">
+      <End Role="Course" EntitySet="Courses" />
+      <End Role="CourseEnrollment" EntitySet="CourseEnrollments" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CourseOff__Cours__1D4655FB" Association="PointDBModel.FK__CourseOff__Cours__1D4655FB">
+      <End Role="Course" EntitySet="Courses" />
+      <End Role="CourseOffered" EntitySet="CourseOffereds" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CourseOff__Cours__7FB5F314" Association="PointDBModel.FK__CourseOff__Cours__7FB5F314">
+      <End Role="Course" EntitySet="Courses" />
+      <End Role="CourseOffered" EntitySet="CourseOffereds" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Timetable__cours__793DFFAF" Association="PointDBModel.FK__Timetable__cours__793DFFAF">
+      <End Role="Course" EntitySet="Courses" />
+      <End Role="Timetable" EntitySet="Timetables" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CourseEnr__Stude__0C1BC9F9" Association="PointDBModel.FK__CourseEnr__Stude__0C1BC9F9">
+      <End Role="Student" EntitySet="Students" />
+      <End Role="CourseEnrollment" EntitySet="CourseEnrollments" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CourseEnr__Stude__2AA05119" Association="PointDBModel.FK__CourseEnr__Stude__2AA05119">
+      <End Role="Student" EntitySet="Students" />
+      <End Role="CourseEnrollment" EntitySet="CourseEnrollments" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CourseEnro__FSID__0B27A5C0" Association="PointDBModel.FK__CourseEnro__FSID__0B27A5C0">
+      <End Role="FacultySection" EntitySet="FacultySections" />
+      <End Role="CourseEnrollment" EntitySet="CourseEnrollments" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CourseEnro__FSID__29AC2CE0" Association="PointDBModel.FK__CourseEnro__FSID__29AC2CE0">
+      <End Role="FacultySection" EntitySet="FacultySections" />
+      <End Role="CourseEnrollment" EntitySet="CourseEnrollments" />
+    </AssociationSet>
+    <AssociationSet Name="FK__StudentAs__Enrol__2C88998B" Association="PointDBModel.FK__StudentAs__Enrol__2C88998B">
+      <End Role="CourseEnrollment" EntitySet="CourseEnrollments" />
+      <End Role="StudentAssignment" EntitySet="StudentAssignments" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CourseFac__Cours__02925FBF" Association="PointDBModel.FK__CourseFac__Cours__02925FBF">
+      <End Role="CourseOffered" EntitySet="CourseOffereds" />
+      <End Role="CourseFaculty" EntitySet="CourseFaculties" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CourseFac__Cours__2116E6DF" Association="PointDBModel.FK__CourseFac__Cours__2116E6DF">
+      <End Role="CourseOffered" EntitySet="CourseOffereds" />
+      <End Role="CourseFaculty" EntitySet="CourseFaculties" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CourseFac__EmpID__019E3B86" Association="PointDBModel.FK__CourseFac__EmpID__019E3B86">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="CourseFaculty" EntitySet="CourseFaculties" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CourseFac__EmpID__2022C2A6" Association="PointDBModel.FK__CourseFac__EmpID__2022C2A6">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="CourseFaculty" EntitySet="CourseFaculties" />
+    </AssociationSet>
+    <AssociationSet Name="FK__FacultySec__CFID__0662F0A3" Association="PointDBModel.FK__FacultySec__CFID__0662F0A3">
+      <End Role="CourseFaculty" EntitySet="CourseFaculties" />
+      <End Role="FacultySection" EntitySet="FacultySections" />
+    </AssociationSet>
+    <AssociationSet Name="FK__FacultySec__CFID__24E777C3" Association="PointDBModel.FK__FacultySec__CFID__24E777C3">
+      <End Role="CourseFaculty" EntitySet="CourseFaculties" />
+      <End Role="FacultySection" EntitySet="FacultySections" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CourseOff__Semes__1E3A7A34" Association="PointDBModel.FK__CourseOff__Semes__1E3A7A34">
+      <End Role="Semester" EntitySet="Semesters" />
+      <End Role="CourseOffered" EntitySet="CourseOffereds" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Timetable__dayID__7849DB76" Association="PointDBModel.FK__Timetable__dayID__7849DB76">
+      <End Role="daysofweek" EntitySet="daysofweeks" />
+      <End Role="Timetable" EntitySet="Timetables" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Employee__Depart__047AA831" Association="PointDBModel.FK__Employee__Depart__047AA831">
+      <End Role="Department" EntitySet="Departments" />
+      <End Role="Employee" EntitySet="Employees" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Employee__Design__038683F8" Association="PointDBModel.FK__Employee__Design__038683F8">
+      <End Role="Designation" EntitySet="Designations" />
+      <End Role="Employee" EntitySet="Employees" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Timetable__empID__7755B73D" Association="PointDBModel.FK__Timetable__empID__7755B73D">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="Timetable" EntitySet="Timetables" />
+    </AssociationSet>
+    <AssociationSet Name="FK__FacultySe__Secti__075714DC" Association="PointDBModel.FK__FacultySe__Secti__075714DC">
+      <End Role="Section" EntitySet="Sections" />
+      <End Role="FacultySection" EntitySet="FacultySections" />
+    </AssociationSet>
+    <AssociationSet Name="FK__FacultySe__Secti__12C8C788" Association="PointDBModel.FK__FacultySe__Secti__12C8C788">
+      <End Role="Section" EntitySet="Sections" />
+      <End Role="FacultySection" EntitySet="FacultySections" />
+    </AssociationSet>
+    <AssociationSet Name="FK__FacultySe__Secti__25DB9BFC" Association="PointDBModel.FK__FacultySe__Secti__25DB9BFC">
+      <End Role="Section" EntitySet="Sections" />
+      <End Role="FacultySection" EntitySet="FacultySections" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ProjectFram__FID__7FEAFD3E" Association="PointDBModel.FK__ProjectFram__FID__7FEAFD3E">
+      <End Role="FrameworkLanguage" EntitySet="FrameworkLanguages" />
+      <End Role="ProjectFramework" EntitySet="ProjectFrameworks" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Student__Program__30592A6F" Association="PointDBModel.FK__Student__Program__30592A6F">
+      <End Role="Programme" EntitySet="Programmes" />
+      <End Role="Student" EntitySet="Students" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ProjectFr__proje__00DF2177" Association="PointDBModel.FK__ProjectFr__proje__00DF2177">
+      <End Role="StudentProject" EntitySet="StudentProjects" />
+      <End Role="ProjectFramework" EntitySet="ProjectFrameworks" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Timetable__roomI__7C1A6C5A" Association="PointDBModel.FK__Timetable__roomI__7C1A6C5A">
+      <End Role="Room" EntitySet="Rooms" />
+      <End Role="Timetable" EntitySet="Timetables" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Timetable__secti__7A3223E8" Association="PointDBModel.FK__Timetable__secti__7A3223E8">
+      <End Role="Section" EntitySet="Sections" />
+      <End Role="Timetable" EntitySet="Timetables" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Timetable__times__7D0E9093" Association="PointDBModel.FK__Timetable__times__7D0E9093">
+      <End Role="Timeslot" EntitySet="Timeslots" />
+      <End Role="Timetable" EntitySet="Timetables" />
+    </AssociationSet>
+  </EntityContainer>
+  <ComplexType Name="GetStudentProfile_Result">
+    <Property Type="Int32" Name="StudentID" Nullable="false" />
+    <Property Type="Int32" Name="ProjectID" Nullable="false" />
+    <Property Type="String" Name="ProjectName" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="GitHubLink" Nullable="false" MaxLength="200" />
+    <Property Type="Int32" Name="CourseOfferedID" Nullable="false" />
+    <Property Type="String" Name="Status" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="FName" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+  <EntityType Name="Driver">
+    <Key>
+      <PropertyRef Name="CNIC" />
+    </Key>
+    <Property Name="CNIC" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="DriverName" Type="String" Nullable="false" MaxLength="30" FixedLength="true" Unicode="false" />
+    <Property Name="ContactNumber" Type="String" Nullable="false" MaxLength="11" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Points" Relationship="PointDBModel.FK_Driver_Point_CNIC" FromRole="Driver" ToRole="Point" />
+  </EntityType>
+  <EntityType Name="Point">
+    <Key>
+      <PropertyRef Name="PointID" />
+    </Key>
+    <Property Name="PointID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NumberPlate" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
+    <Property Name="NumberOfSeats" Type="Int32" Nullable="false" />
+    <Property Name="CNIC" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Driver" Relationship="PointDBModel.FK_Driver_Point_CNIC" FromRole="Point" ToRole="Driver" />
+    <NavigationProperty Name="Routes" Relationship="PointDBModel.FK_Point_Route_PointID" FromRole="Point" ToRole="Route" />
+    <NavigationProperty Name="StudentPoints" Relationship="PointDBModel.FK_Point_StudentPoint_PointID" FromRole="Point" ToRole="StudentPoint" />
+  </EntityType>
+  <EntityType Name="PointFee">
+    <Key>
+      <PropertyRef Name="FeeID" />
+    </Key>
+    <Property Name="FeeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TransportFee" Type="Int32" Nullable="false" />
+    <Property Name="DueDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="FineCharges" Type="Int32" Nullable="false" />
+    <Property Name="SemesterID" Type="Int32" />
+    <NavigationProperty Name="PointPayments" Relationship="PointDBModel.FK_PointFee_PointPayment_FeeID" FromRole="PointFee" ToRole="PointPayment" />
+    <NavigationProperty Name="Semester" Relationship="PointDBModel.FK_Semester_PointFee_SemesterID" FromRole="PointFee" ToRole="Semester" />
+  </EntityType>
+  <EntityType Name="PointPayment">
+    <Key>
+      <PropertyRef Name="PaymentID" />
+    </Key>
+    <Property Name="DepositDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="NumberofDaysLate" Type="Int32" Nullable="false" />
+    <Property Name="TotalPayable" Type="Int32" Nullable="false" />
+    <Property Name="PaymentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StudentID" Type="Int32" />
+    <Property Name="FeeID" Type="Int32" />
+    <NavigationProperty Name="PointFee" Relationship="PointDBModel.FK_PointFee_PointPayment_FeeID" FromRole="PointPayment" ToRole="PointFee" />
+    <NavigationProperty Name="Student" Relationship="PointDBModel.FK_Student_PointPayment_StudentID" FromRole="PointPayment" ToRole="Student" />
+  </EntityType>
+  <EntityType Name="Route">
+    <Key>
+      <PropertyRef Name="RouteID" />
+    </Key>
+    <Property Name="RouteID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PointID" Type="Int32" />
+    <Property Name="RouteStop" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="RouteTime" Type="Time" Nullable="false" Precision="0" />
+    <NavigationProperty Name="Point" Relationship="PointDBModel.FK_Point_Route_PointID" FromRole="Route" ToRole="Point" />
+  </EntityType>
+  <EntityType Name="Semester">
+    <Key>
+      <PropertyRef Name="SemesterID" />
+    </Key>
+    <Property Name="SemesterID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SemesterName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SemesterType" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="PointFees" Relationship="PointDBModel.FK_Semester_PointFee_SemesterID" FromRole="Semester" ToRole="PointFee" />
+    <NavigationProperty Name="StudentPoints" Relationship="PointDBModel.FK_Semester_StudentPoint_SemesterID" FromRole="Semester" ToRole="StudentPoint" />
+    <NavigationProperty Name="Configs" Relationship="PointDBModel.Config_FK" FromRole="Semester" ToRole="Config" />
+    <NavigationProperty Name="CourseOffereds" Relationship="PointDBModel.FK__CourseOff__Semes__1E3A7A34" FromRole="Semester" ToRole="CourseOffered" />
+  </EntityType>
+  <EntityType Name="Student">
+    <Key>
+      <PropertyRef Name="StudentID" />
+    </Key>
+    <Property Name="StudentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MobileNumber" Type="String" Nullable="false" MaxLength="11" FixedLength="false" Unicode="false" />
+    <Property Name="RollNumber" Type="String" Nullable="false" MaxLength="7" FixedLength="false" Unicode="false" />
+    <Property Name="CandidateID" Type="Int32" Nullable="false" />
+    <Property Name="BatchID" Type="Int32" Nullable="false" />
+    <Property Name="SPassword" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="ProgrammeID" Type="Int32" />
+    <NavigationProperty Name="PointPayments" Relationship="PointDBModel.FK_Student_PointPayment_StudentID" FromRole="Student" ToRole="PointPayment" />
+    <NavigationProperty Name="StudentPoints" Relationship="PointDBModel.FK_Student_StudentPoint_StudentID" FromRole="Student" ToRole="StudentPoint" />
+    <NavigationProperty Name="AppliedFors" Relationship="PointDBModel.FK__AppliedFo__Stude__65F62111" FromRole="Student" ToRole="AppliedFor" />
+    <NavigationProperty Name="Batch" Relationship="PointDBModel.FK__Student__BatchID__2F650636" FromRole="Student" ToRole="Batch" />
+    <NavigationProperty Name="CandidateStudent" Relationship="PointDBModel.FK__Student__Candida__314D4EA8" FromRole="Student" ToRole="CandidateStudent" />
+    <NavigationProperty Name="CourseEnrollments" Relationship="PointDBModel.FK__CourseEnr__Stude__0C1BC9F9" FromRole="Student" ToRole="CourseEnrollment" />
+    <NavigationProperty Name="CourseEnrollments1" Relationship="PointDBModel.FK__CourseEnr__Stude__2AA05119" FromRole="Student" ToRole="CourseEnrollment" />
+    <NavigationProperty Name="Programme" Relationship="PointDBModel.FK__Student__Program__30592A6F" FromRole="Student" ToRole="Programme" />
+  </EntityType>
+  <EntityType Name="StudentPoint">
+    <Key>
+      <PropertyRef Name="StudentPointId" />
+    </Key>
+    <Property Name="StudentPointId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PickUpAddress" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PointID" Type="Int32" />
+    <Property Name="StudentID" Type="Int32" />
+    <Property Name="SemesterID" Type="Int32" />
+    <Property Name="RegistrationDate" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Point" Relationship="PointDBModel.FK_Point_StudentPoint_PointID" FromRole="StudentPoint" ToRole="Point" />
+    <NavigationProperty Name="Semester" Relationship="PointDBModel.FK_Semester_StudentPoint_SemesterID" FromRole="StudentPoint" ToRole="Semester" />
+    <NavigationProperty Name="Student" Relationship="PointDBModel.FK_Student_StudentPoint_StudentID" FromRole="StudentPoint" ToRole="Student" />
+  </EntityType>
+  <Association Name="FK_Driver_Point_CNIC">
+    <End Type="PointDBModel.Driver" Role="Driver" Multiplicity="0..1" />
+    <End Type="PointDBModel.Point" Role="Point" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Driver">
+        <PropertyRef Name="CNIC" />
+      </Principal>
+      <Dependent Role="Point">
+        <PropertyRef Name="CNIC" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Point_Route_PointID">
+    <End Type="PointDBModel.Point" Role="Point" Multiplicity="0..1" />
+    <End Type="PointDBModel.Route" Role="Route" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Point">
+        <PropertyRef Name="PointID" />
+      </Principal>
+      <Dependent Role="Route">
+        <PropertyRef Name="PointID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Point_StudentPoint_PointID">
+    <End Type="PointDBModel.Point" Role="Point" Multiplicity="0..1" />
+    <End Type="PointDBModel.StudentPoint" Role="StudentPoint" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Point">
+        <PropertyRef Name="PointID" />
+      </Principal>
+      <Dependent Role="StudentPoint">
+        <PropertyRef Name="PointID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PointFee_PointPayment_FeeID">
+    <End Type="PointDBModel.PointFee" Role="PointFee" Multiplicity="0..1" />
+    <End Type="PointDBModel.PointPayment" Role="PointPayment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PointFee">
+        <PropertyRef Name="FeeID" />
+      </Principal>
+      <Dependent Role="PointPayment">
+        <PropertyRef Name="FeeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Semester_PointFee_SemesterID">
+    <End Type="PointDBModel.Semester" Role="Semester" Multiplicity="0..1" />
+    <End Type="PointDBModel.PointFee" Role="PointFee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Semester">
+        <PropertyRef Name="SemesterID" />
+      </Principal>
+      <Dependent Role="PointFee">
+        <PropertyRef Name="SemesterID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Student_PointPayment_StudentID">
+    <End Type="PointDBModel.Student" Role="Student" Multiplicity="0..1" />
+    <End Type="PointDBModel.PointPayment" Role="PointPayment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="StudentID" />
+      </Principal>
+      <Dependent Role="PointPayment">
+        <PropertyRef Name="StudentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Semester_StudentPoint_SemesterID">
+    <End Type="PointDBModel.Semester" Role="Semester" Multiplicity="0..1" />
+    <End Type="PointDBModel.StudentPoint" Role="StudentPoint" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Semester">
+        <PropertyRef Name="SemesterID" />
+      </Principal>
+      <Dependent Role="StudentPoint">
+        <PropertyRef Name="SemesterID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Student_StudentPoint_StudentID">
+    <End Type="PointDBModel.Student" Role="Student" Multiplicity="0..1" />
+    <End Type="PointDBModel.StudentPoint" Role="StudentPoint" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="StudentID" />
+      </Principal>
+      <Dependent Role="StudentPoint">
+        <PropertyRef Name="StudentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="AdmissionTest">
+    <Key>
+      <PropertyRef Name="TestID" />
+    </Key>
+    <Property Name="TestID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TestDate" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="TestOpeningID" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AffiliatedOrganization">
+    <Key>
+      <PropertyRef Name="OrganizationID" />
+    </Key>
+    <Property Name="OrganizationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OrganizationName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Alumnus">
+    <Key>
+      <PropertyRef Name="AlumniID" />
+    </Key>
+    <Property Name="AlumniID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StudentID" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AlumniExperience">
+    <Key>
+      <PropertyRef Name="RefID" />
+    </Key>
+    <Property Name="RefID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AlumniID" Type="Int32" Nullable="false" />
+    <Property Name="ExpID" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Answer">
+    <Key>
+      <PropertyRef Name="AnsId" />
+    </Key>
+    <Property Name="AnsId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Responsetype" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="response" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="QuestionId" Type="Int32" Nullable="false" />
+    <Property Name="FeedbackID" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AppliedFor">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StudentId" Type="Int32" Nullable="false" />
+    <Property Name="JobID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Job" Relationship="PointDBModel.FK__AppliedFo__JobID__66EA454A" FromRole="AppliedFor" ToRole="Job" />
+    <NavigationProperty Name="Student" Relationship="PointDBModel.FK__AppliedFo__Stude__65F62111" FromRole="AppliedFor" ToRole="Student" />
+  </EntityType>
+  <EntityType Name="Approvee">
+    <Key>
+      <PropertyRef Name="ApproveeID" />
+    </Key>
+    <Property Name="ApproveeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EmpID" Type="Int32" Nullable="false" />
+    <Property Name="SemesterID" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Assignment">
+    <Key>
+      <PropertyRef Name="AssignmentID" />
+    </Key>
+    <Property Name="AssignmentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AssignmentName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="AttachmentLink" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="DueDateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ReSubmissionAllowed" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="FSID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="FacultySection" Relationship="PointDBModel.FK__Assignment__FSID__084B3915" FromRole="Assignment" ToRole="FacultySection" />
+    <NavigationProperty Name="FacultySection1" Relationship="PointDBModel.FK__Assignment__FSID__26CFC035" FromRole="Assignment" ToRole="FacultySection" />
+    <NavigationProperty Name="StudentAssignments" Relationship="PointDBModel.FK__StudentAs__Assig__093F5D4E" FromRole="Assignment" ToRole="StudentAssignment" />
+  </EntityType>
+  <EntityType Name="Attendance">
+    <Key>
+      <PropertyRef Name="AttendanceID" />
+    </Key>
+    <Property Name="AttendanceID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AttendanceDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="AttendanceStatus" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="ClassDuration" Type="Int32" Nullable="false" />
+    <Property Name="EnrollmentID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="CourseEnrollment" Relationship="PointDBModel.FK_Attendance_CourseEnrollment" FromRole="Attendance" ToRole="CourseEnrollment" />
+  </EntityType>
+  <EntityType Name="Batch">
+    <Key>
+      <PropertyRef Name="BatchID" />
+    </Key>
+    <Property Name="BatchID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BatchName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="BatchYear" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="CourseOffereds" Relationship="PointDBModel.FK__CourseOff__Batch__00AA174D" FromRole="Batch" ToRole="CourseOffered" />
+    <NavigationProperty Name="CourseOffereds1" Relationship="PointDBModel.FK__CourseOff__Batch__1F2E9E6D" FromRole="Batch" ToRole="CourseOffered" />
+    <NavigationProperty Name="Sections" Relationship="PointDBModel.FK__Section__BatchID__2E70E1FD" FromRole="Batch" ToRole="Section" />
+    <NavigationProperty Name="Students" Relationship="PointDBModel.FK__Student__BatchID__2F650636" FromRole="Batch" ToRole="Student" />
+    <NavigationProperty Name="Timetables" Relationship="PointDBModel.FK__Timetable__batch__7B264821" FromRole="Batch" ToRole="Timetable" />
+  </EntityType>
+  <EntityType Name="Book">
+    <Key>
+      <PropertyRef Name="BookID" />
+    </Key>
+    <Property Name="BookID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ISBN" Type="Int32" />
+    <Property Name="Title" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="BLanguage" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="BPublisher" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="BAuthor" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="BookIssue">
+    <Key>
+      <PropertyRef Name="IssueID" />
+    </Key>
+    <Property Name="IssueID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IssueDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="DueDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="StudentID" Type="Int32" Nullable="false" />
+    <Property Name="EmpID" Type="Int32" Nullable="false" />
+    <Property Name="BookID" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="BookReturn">
+    <Key>
+      <PropertyRef Name="ReturnID" />
+    </Key>
+    <Property Name="ReturnID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ReturnDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="isLate" Type="Int32" />
+    <Property Name="IssueID" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CafeteriaStaff">
+    <Key>
+      <PropertyRef Name="StaffID" />
+    </Key>
+    <Property Name="StaffID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SPassword" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SRole" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="CandidateEmployee">
+    <Key>
+      <PropertyRef Name="ECandidateID" />
+    </Key>
+    <Property Name="ECandidateID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="EAddress" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="MobileNumber" Type="String" Nullable="false" MaxLength="11" FixedLength="false" Unicode="false" />
+    <Property Name="EducationLevel" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ExperienceYears" Type="Int32" Nullable="false" />
+    <Property Name="CVpath" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Coverletterpath" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="EPassword" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="CandidateStudent">
+    <Key>
+      <PropertyRef Name="CandidateID" />
+    </Key>
+    <Property Name="CandidateID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CAddress" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ContactInfo" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+    <Property Name="HSCResult" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="SSCResult" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Students" Relationship="PointDBModel.FK__Student__Candida__314D4EA8" FromRole="CandidateStudent" ToRole="Student" />
+  </EntityType>
+  <EntityType Name="CandidateTestDetail">
+    <Key>
+      <PropertyRef Name="DetailsID" />
+    </Key>
+    <Property Name="DetailsID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CandidateID" Type="Int32" Nullable="false" />
+    <Property Name="AssignedTestID" Type="Int32" Nullable="false" />
+    <Property Name="TestScore" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="ChatKeyword">
+    <Key>
+      <PropertyRef Name="KeywordID" />
+    </Key>
+    <Property Name="KeywordID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ChatWord" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="StatusType" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="ChatLog">
+    <Key>
+      <PropertyRef Name="ChatID" />
+    </Key>
+    <Property Name="ChatID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ChatTime" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="Response" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="Input" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="StudentID" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Choice">
+    <Key>
+      <PropertyRef Name="QuestionId" />
+    </Key>
+    <Property Name="QuestionId" Type="Int32" Nullable="false" />
+    <Property Name="Choice1" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Choice2" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Choice3" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Choice4" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="ClearanceRequest">
+    <Key>
+      <PropertyRef Name="RequestID" />
+    </Key>
+    <Property Name="RequestID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ParentName1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ParentCNIC1" Type="String" Nullable="false" MaxLength="13" FixedLength="false" Unicode="false" />
+    <Property Name="ParentName2" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ParentCNIC2" Type="String" Nullable="false" MaxLength="13" FixedLength="false" Unicode="false" />
+    <Property Name="SemesterGraduation" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="RequestDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="StudentID" Type="Int32" Nullable="false" />
+    <Property Name="Status" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Config">
+    <Key>
+      <PropertyRef Name="configID" />
+    </Key>
+    <Property Name="CreditLimit" Type="Int32" />
+    <Property Name="configID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SemesterID" Type="Int32" Nullable="false" />
+    <Property Name="RegistrationStatus" Type="Byte" Nullable="false" />
+    <Property Name="SemesterStartDate" Type="Int64" />
+    <Property Name="SemesterEndDate" Type="Int64" />
+    <Property Name="RegistrationStartDate" Type="Int64" />
+    <Property Name="RegistrationEndDate" Type="Int64" />
+    <Property Name="FeedbackStartDate" Type="Int64" />
+    <Property Name="FeedbackEndDate" Type="Int64" />
+    <NavigationProperty Name="Semester" Relationship="PointDBModel.Config_FK" FromRole="Config" ToRole="Semester" />
+  </EntityType>
+  <EntityType Name="Course">
+    <Key>
+      <PropertyRef Name="CourseID" />
+    </Key>
+    <Property Name="CourseID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CourseName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CourseCode" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="CourseEnrollments" Relationship="PointDBModel.FK__CourseEnr__Cours__0D0FEE32" FromRole="Course" ToRole="CourseEnrollment" />
+    <NavigationProperty Name="CourseEnrollments1" Relationship="PointDBModel.FK__CourseEnr__Cours__2B947552" FromRole="Course" ToRole="CourseEnrollment" />
+    <NavigationProperty Name="CourseOffereds" Relationship="PointDBModel.FK__CourseOff__Cours__1D4655FB" FromRole="Course" ToRole="CourseOffered" />
+    <NavigationProperty Name="CourseOffereds1" Relationship="PointDBModel.FK__CourseOff__Cours__7FB5F314" FromRole="Course" ToRole="CourseOffered" />
+    <NavigationProperty Name="Timetables" Relationship="PointDBModel.FK__Timetable__cours__793DFFAF" FromRole="Course" ToRole="Timetable" />
+  </EntityType>
+  <EntityType Name="CourseEnrollment">
+    <Key>
+      <PropertyRef Name="EnrollmentID" />
+    </Key>
+    <Property Name="EnrollmentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CourseStatus" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="IsFeedBackSubmit" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="FSID" Type="Int32" Nullable="false" />
+    <Property Name="StudentID" Type="Int32" Nullable="false" />
+    <Property Name="CourseID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Attendances" Relationship="PointDBModel.FK_Attendance_CourseEnrollment" FromRole="CourseEnrollment" ToRole="Attendance" />
+    <NavigationProperty Name="Course" Relationship="PointDBModel.FK__CourseEnr__Cours__0D0FEE32" FromRole="CourseEnrollment" ToRole="Course" />
+    <NavigationProperty Name="Course1" Relationship="PointDBModel.FK__CourseEnr__Cours__2B947552" FromRole="CourseEnrollment" ToRole="Course" />
+    <NavigationProperty Name="Student" Relationship="PointDBModel.FK__CourseEnr__Stude__0C1BC9F9" FromRole="CourseEnrollment" ToRole="Student" />
+    <NavigationProperty Name="Student1" Relationship="PointDBModel.FK__CourseEnr__Stude__2AA05119" FromRole="CourseEnrollment" ToRole="Student" />
+    <NavigationProperty Name="FacultySection" Relationship="PointDBModel.FK__CourseEnro__FSID__0B27A5C0" FromRole="CourseEnrollment" ToRole="FacultySection" />
+    <NavigationProperty Name="FacultySection1" Relationship="PointDBModel.FK__CourseEnro__FSID__29AC2CE0" FromRole="CourseEnrollment" ToRole="FacultySection" />
+    <NavigationProperty Name="StudentAssignments" Relationship="PointDBModel.FK__StudentAs__Enrol__2C88998B" FromRole="CourseEnrollment" ToRole="StudentAssignment" />
+  </EntityType>
+  <EntityType Name="CourseFaculty">
+    <Key>
+      <PropertyRef Name="CFID" />
+    </Key>
+    <Property Name="CFID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NumberOfSection" Type="Int32" Nullable="false" />
+    <Property Name="CourseOfferedID" Type="Int32" Nullable="false" />
+    <Property Name="EmpID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="CourseOffered" Relationship="PointDBModel.FK__CourseFac__Cours__02925FBF" FromRole="CourseFaculty" ToRole="CourseOffered" />
+    <NavigationProperty Name="CourseOffered1" Relationship="PointDBModel.FK__CourseFac__Cours__2116E6DF" FromRole="CourseFaculty" ToRole="CourseOffered" />
+    <NavigationProperty Name="Employee" Relationship="PointDBModel.FK__CourseFac__EmpID__019E3B86" FromRole="CourseFaculty" ToRole="Employee" />
+    <NavigationProperty Name="Employee1" Relationship="PointDBModel.FK__CourseFac__EmpID__2022C2A6" FromRole="CourseFaculty" ToRole="Employee" />
+    <NavigationProperty Name="FacultySections" Relationship="PointDBModel.FK__FacultySec__CFID__0662F0A3" FromRole="CourseFaculty" ToRole="FacultySection" />
+    <NavigationProperty Name="FacultySections1" Relationship="PointDBModel.FK__FacultySec__CFID__24E777C3" FromRole="CourseFaculty" ToRole="FacultySection" />
+  </EntityType>
+  <EntityType Name="CourseFeedback">
+    <Key>
+      <PropertyRef Name="FbID" />
+    </Key>
+    <Property Name="FbID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StudentId" Type="Int32" Nullable="false" />
+    <Property Name="EnrollmentId" Type="Int32" Nullable="false" />
+    <Property Name="isSubmitted" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="CourseOffered">
+    <Key>
+      <PropertyRef Name="CourseOfferedID" />
+    </Key>
+    <Property Name="CourseOfferedID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CreditHrs" Type="Int32" Nullable="false" />
+    <Property Name="CourseNSections" Type="Int32" Nullable="false" />
+    <Property Name="MaxStdPerSection" Type="Int32" Nullable="false" />
+    <Property Name="BatchID" Type="Int32" Nullable="false" />
+    <Property Name="SemesterID" Type="Int32" Nullable="false" />
+    <Property Name="CourseID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Batch" Relationship="PointDBModel.FK__CourseOff__Batch__00AA174D" FromRole="CourseOffered" ToRole="Batch" />
+    <NavigationProperty Name="Batch1" Relationship="PointDBModel.FK__CourseOff__Batch__1F2E9E6D" FromRole="CourseOffered" ToRole="Batch" />
+    <NavigationProperty Name="Course" Relationship="PointDBModel.FK__CourseOff__Cours__1D4655FB" FromRole="CourseOffered" ToRole="Course" />
+    <NavigationProperty Name="Course1" Relationship="PointDBModel.FK__CourseOff__Cours__7FB5F314" FromRole="CourseOffered" ToRole="Course" />
+    <NavigationProperty Name="CourseFaculties" Relationship="PointDBModel.FK__CourseFac__Cours__02925FBF" FromRole="CourseOffered" ToRole="CourseFaculty" />
+    <NavigationProperty Name="CourseFaculties1" Relationship="PointDBModel.FK__CourseFac__Cours__2116E6DF" FromRole="CourseOffered" ToRole="CourseFaculty" />
+    <NavigationProperty Name="Semester" Relationship="PointDBModel.FK__CourseOff__Semes__1E3A7A34" FromRole="CourseOffered" ToRole="Semester" />
+  </EntityType>
+  <EntityType Name="daysofweek">
+    <Key>
+      <PropertyRef Name="dayID" />
+    </Key>
+    <Property Name="dayID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="dayvalue" Type="Int32" />
+    <NavigationProperty Name="Timetables" Relationship="PointDBModel.FK__Timetable__dayID__7849DB76" FromRole="daysofweek" ToRole="Timetable" />
+  </EntityType>
+  <EntityType Name="Department">
+    <Key>
+      <PropertyRef Name="DepartmentID" />
+    </Key>
+    <Property Name="DepartmentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DepartmentName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Employees" Relationship="PointDBModel.FK__Employee__Depart__047AA831" FromRole="Department" ToRole="Employee" />
+  </EntityType>
+  <EntityType Name="Designation">
+    <Key>
+      <PropertyRef Name="DesignationID" />
+    </Key>
+    <Property Name="DesignationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DesignationTitle" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Employees" Relationship="PointDBModel.FK__Employee__Design__038683F8" FromRole="Designation" ToRole="Employee" />
+  </EntityType>
+  <EntityType Name="Domain">
+    <Key>
+      <PropertyRef Name="DomainID" />
+    </Key>
+    <Property Name="DomainID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DomainName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="ECandidateApplication">
+    <Key>
+      <PropertyRef Name="RefID" />
+    </Key>
+    <Property Name="RefID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="QualifiedStatus" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="ApplyDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="ECandidateID" Type="Int32" Nullable="false" />
+    <Property Name="JobID" Type="Int32" Nullable="false" />
+    <Property Name="TestDate" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="EmpID" />
+    </Key>
+    <Property Name="EmpID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EmpName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MobileNumber" Type="String" Nullable="false" MaxLength="11" FixedLength="false" Unicode="false" />
+    <Property Name="DesignationID" Type="Int32" Nullable="false" />
+    <Property Name="DepartmentID" Type="Int32" Nullable="false" />
+    <Property Name="RefID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="CourseFaculties" Relationship="PointDBModel.FK__CourseFac__EmpID__019E3B86" FromRole="Employee" ToRole="CourseFaculty" />
+    <NavigationProperty Name="CourseFaculties1" Relationship="PointDBModel.FK__CourseFac__EmpID__2022C2A6" FromRole="Employee" ToRole="CourseFaculty" />
+    <NavigationProperty Name="Department" Relationship="PointDBModel.FK__Employee__Depart__047AA831" FromRole="Employee" ToRole="Department" />
+    <NavigationProperty Name="Designation" Relationship="PointDBModel.FK__Employee__Design__038683F8" FromRole="Employee" ToRole="Designation" />
+    <NavigationProperty Name="Timetables" Relationship="PointDBModel.FK__Timetable__empID__7755B73D" FromRole="Employee" ToRole="Timetable" />
+  </EntityType>
+  <EntityType Name="FacultySection">
+    <Key>
+      <PropertyRef Name="FSID" />
+    </Key>
+    <Property Name="FSID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CFID" Type="Int32" Nullable="false" />
+    <Property Name="SectionID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Assignments" Relationship="PointDBModel.FK__Assignment__FSID__084B3915" FromRole="FacultySection" ToRole="Assignment" />
+    <NavigationProperty Name="Assignments1" Relationship="PointDBModel.FK__Assignment__FSID__26CFC035" FromRole="FacultySection" ToRole="Assignment" />
+    <NavigationProperty Name="CourseEnrollments" Relationship="PointDBModel.FK__CourseEnro__FSID__0B27A5C0" FromRole="FacultySection" ToRole="CourseEnrollment" />
+    <NavigationProperty Name="CourseEnrollments1" Relationship="PointDBModel.FK__CourseEnro__FSID__29AC2CE0" FromRole="FacultySection" ToRole="CourseEnrollment" />
+    <NavigationProperty Name="CourseFaculty" Relationship="PointDBModel.FK__FacultySec__CFID__0662F0A3" FromRole="FacultySection" ToRole="CourseFaculty" />
+    <NavigationProperty Name="CourseFaculty1" Relationship="PointDBModel.FK__FacultySec__CFID__24E777C3" FromRole="FacultySection" ToRole="CourseFaculty" />
+    <NavigationProperty Name="Section" Relationship="PointDBModel.FK__FacultySe__Secti__075714DC" FromRole="FacultySection" ToRole="Section" />
+    <NavigationProperty Name="Section1" Relationship="PointDBModel.FK__FacultySe__Secti__12C8C788" FromRole="FacultySection" ToRole="Section" />
+    <NavigationProperty Name="Section2" Relationship="PointDBModel.FK__FacultySe__Secti__25DB9BFC" FromRole="FacultySection" ToRole="Section" />
+  </EntityType>
+  <EntityType Name="Feedback">
+    <Key>
+      <PropertyRef Name="FbID" />
+    </Key>
+    <Property Name="FbID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="FDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Rating" Type="Int32" Nullable="false" />
+    <Property Name="StudentID" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FoodItem">
+    <Key>
+      <PropertyRef Name="ItemID" />
+    </Key>
+    <Property Name="ItemID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ItemName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ItemStatus" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="IDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Price" Type="Int32" Nullable="false" />
+    <Property Name="filepath" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="FoodOrder">
+    <Key>
+      <PropertyRef Name="OrderID" />
+    </Key>
+    <Property Name="OrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Amount" Type="Int32" Nullable="false" />
+    <Property Name="OrderDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="OrderStatus" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="PaymentMethod" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="StudentID" Type="Int32" Nullable="false" />
+    <Property Name="OrderTime" Type="Time" Nullable="false" Precision="7" />
+  </EntityType>
+  <EntityType Name="FrameworkLanguage">
+    <Key>
+      <PropertyRef Name="FID" />
+    </Key>
+    <Property Name="FID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ProjectFrameworks" Relationship="PointDBModel.FK__ProjectFram__FID__7FEAFD3E" FromRole="FrameworkLanguage" ToRole="ProjectFramework" />
+  </EntityType>
+  <EntityType Name="Fyp">
+    <Key>
+      <PropertyRef Name="FypID" />
+    </Key>
+    <Property Name="FypID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProjectName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ProjectType" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="CoSuperVisorID" Type="Int32" />
+    <Property Name="FypDescription" Type="String" Nullable="false" MaxLength="3000" FixedLength="false" Unicode="false" />
+    <Property Name="SuperVisorEmpID" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FypForm">
+    <Key>
+      <PropertyRef Name="FormID" />
+    </Key>
+    <Property Name="FormID" Type="Int32" Nullable="false" />
+    <Property Name="FormName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="FypProposal">
+    <Key>
+      <PropertyRef Name="ProposalID" />
+    </Key>
+    <Property Name="ProposalID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProjectTitle" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ProjectType" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Abstract" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="SupervisorID" Type="Int32" Nullable="false" />
+    <Property Name="CoSupervisorID" Type="Int32" />
+    <Property Name="Comment" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="LeaderID" Type="Int32" />
+    <Property Name="Member1ID" Type="Int32" />
+    <Property Name="Member2ID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Job">
+    <Key>
+      <PropertyRef Name="JobID" />
+    </Key>
+    <Property Name="JobID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Organization" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="LastApplyDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Designation" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="MinExperience" Type="Int32" Nullable="false" />
+    <Property Name="Attachmentpath" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="ApplicationLink" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Contactperson" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="AppliedFors" Relationship="PointDBModel.FK__AppliedFo__JobID__66EA454A" FromRole="Job" ToRole="AppliedFor" />
+  </EntityType>
+  <EntityType Name="JobDescription">
+    <Key>
+      <PropertyRef Name="DescID" />
+    </Key>
+    <Property Name="DescID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="JobID" Type="Int32" Nullable="false" />
+    <Property Name="Description" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="JobOpening">
+    <Key>
+      <PropertyRef Name="JobID" />
+    </Key>
+    <Property Name="JobID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MinExperience" Type="Int32" Nullable="false" />
+    <Property Name="JobDescription" Type="String" Nullable="false" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="DatePosted" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="ExpectedStartDate" Type="DateTime" Precision="0" />
+    <Property Name="DesignationID" Type="Int32" Nullable="false" />
+    <Property Name="DepartmentID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="JobTag">
+    <Key>
+      <PropertyRef Name="JobTagID" />
+    </Key>
+    <Property Name="JobTagID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="JobID" Type="Int32" Nullable="false" />
+    <Property Name="TagName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="MarksDistribution">
+    <Key>
+      <PropertyRef Name="MDID" />
+    </Key>
+    <Property Name="MDID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="Int32" Nullable="false" />
+    <Property Name="Weigtage" Type="Double" Nullable="false" />
+    <Property Name="TotalMarks" Type="Double" Nullable="false" />
+    <Property Name="FSID" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MarksRecord">
+    <Key>
+      <PropertyRef Name="MarksID" />
+    </Key>
+    <Property Name="ObtainedMarks" Type="Double" Nullable="false" />
+    <Property Name="MarksID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MDID" Type="Int32" Nullable="false" />
+    <Property Name="StudentID" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="option">
+    <Key>
+      <PropertyRef Name="OptionsId" />
+    </Key>
+    <Property Name="OptionsId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="QuestionID" Type="Int32" Nullable="false" />
+    <Property Name="Opt" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Pattern">
+    <Key>
+      <PropertyRef Name="PatternID" />
+    </Key>
+    <Property Name="PatternID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PatternName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="KeywordID" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Payment">
+    <Key>
+      <PropertyRef Name="PaymentID" />
+    </Key>
+    <Property Name="PaymentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PaymentDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="StudentID" Type="Int32" Nullable="false" />
+    <Property Name="OrderID" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Penalty">
+    <Key>
+      <PropertyRef Name="PenaltyID" />
+    </Key>
+    <Property Name="NumberofDaysLate" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Rate" Type="Int32" Nullable="false" />
+    <Property Name="PenaltyID" Type="Int32" Nullable="false" />
+    <Property Name="IssueID" Type="Int32" Nullable="false" />
+    <Property Name="ReturnID" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Programme">
+    <Key>
+      <PropertyRef Name="ProgrammeID" />
+    </Key>
+    <Property Name="ProgrammeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProgrammeName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DepartmentID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Students" Relationship="PointDBModel.FK__Student__Program__30592A6F" FromRole="Programme" ToRole="Student" />
+  </EntityType>
+  <EntityType Name="ProjectFramework">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="status" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="projectID" Type="Int32" Nullable="false" />
+    <Property Name="FID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="FrameworkLanguage" Relationship="PointDBModel.FK__ProjectFram__FID__7FEAFD3E" FromRole="ProjectFramework" ToRole="FrameworkLanguage" />
+    <NavigationProperty Name="StudentProject" Relationship="PointDBModel.FK__ProjectFr__proje__00DF2177" FromRole="ProjectFramework" ToRole="StudentProject" />
+  </EntityType>
+  <EntityType Name="ProjectSkill">
+    <Key>
+      <PropertyRef Name="PSID" />
+    </Key>
+    <Property Name="PSID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ApproveStatus" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ProjectID" Type="Int32" Nullable="false" />
+    <Property Name="SkillID" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Question">
+    <Key>
+      <PropertyRef Name="QuestionID" />
+    </Key>
+    <Property Name="QuestionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Question1" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CourseType" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="QuestionType" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="RecruitmentExam">
+    <Key>
+      <PropertyRef Name="ExamId" />
+    </Key>
+    <Property Name="ExamId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Degree" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="JobID" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RecruitmentQuestion">
+    <Key>
+      <PropertyRef Name="QuestionId" />
+    </Key>
+    <Property Name="QuestionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="QuestionText" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="CorrectAnswer" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ExamId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Result">
+    <Key>
+      <PropertyRef Name="ResultId" />
+    </Key>
+    <Property Name="ResultId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AttemptedQuestions" Type="Int32" Nullable="false" />
+    <Property Name="CorrectQuestions" Type="Int32" Nullable="false" />
+    <Property Name="RefId" Type="Int32" Nullable="false" />
+    <Property Name="ExamId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Room">
+    <Key>
+      <PropertyRef Name="RoomID" />
+    </Key>
+    <Property Name="RoomID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Roomname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Timetables" Relationship="PointDBModel.FK__Timetable__roomI__7C1A6C5A" FromRole="Room" ToRole="Timetable" />
+  </EntityType>
+  <EntityType Name="SCandidateApplication">
+    <Key>
+      <PropertyRef Name="RefID" />
+    </Key>
+    <Property Name="RefID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="QualifiedStatus" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="ApplyDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="CandidateID" Type="Int32" Nullable="false" />
+    <Property Name="SOpeningID" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Section">
+    <Key>
+      <PropertyRef Name="SectionID" />
+    </Key>
+    <Property Name="SectionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SectionName" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="BatchID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Batch" Relationship="PointDBModel.FK__Section__BatchID__2E70E1FD" FromRole="Section" ToRole="Batch" />
+    <NavigationProperty Name="FacultySections" Relationship="PointDBModel.FK__FacultySe__Secti__075714DC" FromRole="Section" ToRole="FacultySection" />
+    <NavigationProperty Name="FacultySections1" Relationship="PointDBModel.FK__FacultySe__Secti__12C8C788" FromRole="Section" ToRole="FacultySection" />
+    <NavigationProperty Name="FacultySections2" Relationship="PointDBModel.FK__FacultySe__Secti__25DB9BFC" FromRole="Section" ToRole="FacultySection" />
+    <NavigationProperty Name="Timetables" Relationship="PointDBModel.FK__Timetable__secti__7A3223E8" FromRole="Section" ToRole="Timetable" />
+  </EntityType>
+  <EntityType Name="Skill">
+    <Key>
+      <PropertyRef Name="SkillID" />
+    </Key>
+    <Property Name="SkillID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SkillName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DomainID" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="STransaction">
+    <Key>
+      <PropertyRef Name="TransactionID" />
+    </Key>
+    <Property Name="TransactionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TransactionDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Amount" Type="Int32" Nullable="false" />
+    <Property Name="WalletID" Type="Int32" Nullable="false" />
+    <Property Name="TypeID" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="StudentExperience">
+    <Key>
+      <PropertyRef Name="ExpID" />
+    </Key>
+    <Property Name="ExpID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Designation" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="JDescription" Type="String" Nullable="false" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="StudentID" Type="Int32" Nullable="false" />
+    <Property Name="OrganizationID" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="StudentOpening">
+    <Key>
+      <PropertyRef Name="SOpeningID" />
+    </Key>
+    <Property Name="SOpeningID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SYear" Type="Int32" Nullable="false" />
+    <Property Name="MaxSeats" Type="Int32" Nullable="false" />
+    <Property Name="LastApplicationDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="ProgrammeID" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="StudentProject">
+    <Key>
+      <PropertyRef Name="ProjectID" />
+    </Key>
+    <Property Name="ProjectID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProjectName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="GitHubLink" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="StudentID" Type="Int32" Nullable="false" />
+    <Property Name="CourseOfferedID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ProjectFrameworks" Relationship="PointDBModel.FK__ProjectFr__proje__00DF2177" FromRole="StudentProject" ToRole="ProjectFramework" />
+  </EntityType>
+  <EntityType Name="StudentSkill">
+    <Key>
+      <PropertyRef Name="RefID" />
+    </Key>
+    <Property Name="RefID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StudentID" Type="Int32" Nullable="false" />
+    <Property Name="SkillID" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Timeslot">
+    <Key>
+      <PropertyRef Name="TimeslotID" />
+    </Key>
+    <Property Name="TimeslotID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Slot" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Timetables" Relationship="PointDBModel.FK__Timetable__times__7D0E9093" FromRole="Timeslot" ToRole="Timetable" />
+  </EntityType>
+  <EntityType Name="Timetable">
+    <Key>
+      <PropertyRef Name="timetableID" />
+    </Key>
+    <Property Name="timetableID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="empID" Type="Int32" />
+    <Property Name="dayID" Type="Int32" />
+    <Property Name="courseID" Type="Int32" />
+    <Property Name="sectionID" Type="Int32" />
+    <Property Name="batchID" Type="Int32" />
+    <Property Name="roomID" Type="Int32" />
+    <Property Name="timeslotID" Type="Int32" />
+    <NavigationProperty Name="Batch" Relationship="PointDBModel.FK__Timetable__batch__7B264821" FromRole="Timetable" ToRole="Batch" />
+    <NavigationProperty Name="Course" Relationship="PointDBModel.FK__Timetable__cours__793DFFAF" FromRole="Timetable" ToRole="Course" />
+    <NavigationProperty Name="daysofweek" Relationship="PointDBModel.FK__Timetable__dayID__7849DB76" FromRole="Timetable" ToRole="daysofweek" />
+    <NavigationProperty Name="Employee" Relationship="PointDBModel.FK__Timetable__empID__7755B73D" FromRole="Timetable" ToRole="Employee" />
+    <NavigationProperty Name="Room" Relationship="PointDBModel.FK__Timetable__roomI__7C1A6C5A" FromRole="Timetable" ToRole="Room" />
+    <NavigationProperty Name="Section" Relationship="PointDBModel.FK__Timetable__secti__7A3223E8" FromRole="Timetable" ToRole="Section" />
+    <NavigationProperty Name="Timeslot" Relationship="PointDBModel.FK__Timetable__times__7D0E9093" FromRole="Timetable" ToRole="Timeslot" />
+  </EntityType>
+  <EntityType Name="TransactionType">
+    <Key>
+      <PropertyRef Name="TypeID" />
+    </Key>
+    <Property Name="TypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TypeName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Wallet">
+    <Key>
+      <PropertyRef Name="WalletID" />
+    </Key>
+    <Property Name="WalletID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Balance" Type="Int32" Nullable="false" />
+    <Property Name="StudentID" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AlumniSkill">
+    <Key>
+      <PropertyRef Name="AlumniID" />
+      <PropertyRef Name="RefID" />
+      <PropertyRef Name="SkillID" />
+    </Key>
+    <Property Name="AlumniID" Type="Int32" Nullable="false" />
+    <Property Name="RefID" Type="Int32" Nullable="false" />
+    <Property Name="SkillID" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ChatHistory">
+    <Key>
+      <PropertyRef Name="HistID" />
+      <PropertyRef Name="ChatID" />
+    </Key>
+    <Property Name="HistID" Type="Int32" Nullable="false" />
+    <Property Name="ChatID" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FypConfig">
+    <Key>
+      <PropertyRef Name="MaxStudent" />
+      <PropertyRef Name="MinStudent" />
+    </Key>
+    <Property Name="MaxStudent" Type="Int32" Nullable="false" />
+    <Property Name="MinStudent" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FypEvaluation">
+    <Key>
+      <PropertyRef Name="EvaluationID" />
+    </Key>
+    <Property Name="EvaluationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FypID" Type="Int32" />
+    <Property Name="FormID" Type="Int32" />
+    <Property Name="Criteria1Marks" Type="Double" />
+    <Property Name="Criteria2Marks" Type="Double" />
+    <Property Name="Criteria3Marks" Type="Double" />
+    <Property Name="Criteria4Marks" Type="Double" />
+    <Property Name="Criteria5Marks" Type="Double" />
+    <Property Name="Deliverables1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Deliverables2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Deliverables3" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Deliverables4" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Deliverables5" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ChangesRecommeneded" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="DefenceStatus" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Deliverable1Completion" Type="Double" />
+    <Property Name="Deliverable2Completion" Type="Double" />
+    <Property Name="Deliverable3Completion" Type="Double" />
+    <Property Name="Deliverable4Completion" Type="Double" />
+    <Property Name="Deliverable5Completion" Type="Double" />
+    <Property Name="Fyp2Deliverables" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="ProjectProgress" Type="Int32" />
+    <Property Name="DocumentationStatus" Type="Int32" />
+    <Property Name="ProgressComments" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="FypExternalJuryy">
+    <Key>
+      <PropertyRef Name="Username" />
+      <PropertyRef Name="Name" />
+      <PropertyRef Name="Password" />
+    </Key>
+    <Property Name="Username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="FypJury">
+    <Key>
+      <PropertyRef Name="FypID" />
+      <PropertyRef Name="EmpID" />
+    </Key>
+    <Property Name="FypID" Type="Int32" Nullable="false" />
+    <Property Name="EmpID" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FypMark">
+    <Key>
+      <PropertyRef Name="StudentID" />
+      <PropertyRef Name="FormID" />
+    </Key>
+    <Property Name="StudentID" Type="Int32" Nullable="false" />
+    <Property Name="FormID" Type="Int32" Nullable="false" />
+    <Property Name="Marks" Type="Double" />
+  </EntityType>
+  <EntityType Name="FypMember">
+    <Key>
+      <PropertyRef Name="FypID" />
+      <PropertyRef Name="LeaderID" />
+    </Key>
+    <Property Name="FypID" Type="Int32" Nullable="false" />
+    <Property Name="LeaderID" Type="Int32" Nullable="false" />
+    <Property Name="Member1ID" Type="Int32" />
+    <Property Name="Member2ID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="OrderDetail">
+    <Key>
+      <PropertyRef Name="ODID" />
+      <PropertyRef Name="Quantity" />
+      <PropertyRef Name="OrderID" />
+      <PropertyRef Name="ItemID" />
+    </Key>
+    <Property Name="ODID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Quantity" Type="Int32" Nullable="false" />
+    <Property Name="OrderID" Type="Int32" Nullable="false" />
+    <Property Name="ItemID" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RequestApproval">
+    <Key>
+      <PropertyRef Name="RequestStatus" />
+      <PropertyRef Name="RequestDate" />
+      <PropertyRef Name="EmpID" />
+      <PropertyRef Name="RequestID" />
+    </Key>
+    <Property Name="RequestStatus" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="RequestDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Remarks" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="EmpID" Type="Int32" Nullable="false" />
+    <Property Name="RequestID" Type="String" Nullable="false" MaxLength="7" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="StudentAssignment">
+    <Key>
+      <PropertyRef Name="SubmissionID" />
+      <PropertyRef Name="ObtainedMarks" />
+      <PropertyRef Name="ObtainedWeightage" />
+      <PropertyRef Name="SubmissionDateTime" />
+      <PropertyRef Name="EnrollmentID" />
+      <PropertyRef Name="AssignmentID" />
+    </Key>
+    <Property Name="SubmissionID" Type="Int32" Nullable="false" />
+    <Property Name="ObtainedMarks" Type="Double" Nullable="false" />
+    <Property Name="ObtainedWeightage" Type="Double" Nullable="false" />
+    <Property Name="AttachmentLink" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="SubmissionDateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="EnrollmentID" Type="Int32" Nullable="false" />
+    <Property Name="AssignmentID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Assignment" Relationship="PointDBModel.FK__StudentAs__Assig__093F5D4E" FromRole="StudentAssignment" ToRole="Assignment" />
+    <NavigationProperty Name="CourseEnrollment" Relationship="PointDBModel.FK__StudentAs__Enrol__2C88998B" FromRole="StudentAssignment" ToRole="CourseEnrollment" />
+  </EntityType>
+  <Association Name="FK__AppliedFo__JobID__66EA454A">
+    <End Type="PointDBModel.Job" Role="Job" Multiplicity="1" />
+    <End Type="PointDBModel.AppliedFor" Role="AppliedFor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Job">
+        <PropertyRef Name="JobID" />
+      </Principal>
+      <Dependent Role="AppliedFor">
+        <PropertyRef Name="JobID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__AppliedFo__Stude__65F62111">
+    <End Type="PointDBModel.Student" Role="Student" Multiplicity="1" />
+    <End Type="PointDBModel.AppliedFor" Role="AppliedFor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="StudentID" />
+      </Principal>
+      <Dependent Role="AppliedFor">
+        <PropertyRef Name="StudentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Assignment__FSID__084B3915">
+    <End Type="PointDBModel.FacultySection" Role="FacultySection" Multiplicity="1" />
+    <End Type="PointDBModel.Assignment" Role="Assignment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FacultySection">
+        <PropertyRef Name="FSID" />
+      </Principal>
+      <Dependent Role="Assignment">
+        <PropertyRef Name="FSID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Assignment__FSID__26CFC035">
+    <End Type="PointDBModel.FacultySection" Role="FacultySection" Multiplicity="1" />
+    <End Type="PointDBModel.Assignment" Role="Assignment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FacultySection">
+        <PropertyRef Name="FSID" />
+      </Principal>
+      <Dependent Role="Assignment">
+        <PropertyRef Name="FSID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__StudentAs__Assig__093F5D4E">
+    <End Type="PointDBModel.Assignment" Role="Assignment" Multiplicity="1" />
+    <End Type="PointDBModel.StudentAssignment" Role="StudentAssignment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Assignment">
+        <PropertyRef Name="AssignmentID" />
+      </Principal>
+      <Dependent Role="StudentAssignment">
+        <PropertyRef Name="AssignmentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Attendance_CourseEnrollment">
+    <End Type="PointDBModel.CourseEnrollment" Role="CourseEnrollment" Multiplicity="1" />
+    <End Type="PointDBModel.Attendance" Role="Attendance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CourseEnrollment">
+        <PropertyRef Name="EnrollmentID" />
+      </Principal>
+      <Dependent Role="Attendance">
+        <PropertyRef Name="EnrollmentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CourseOff__Batch__00AA174D">
+    <End Type="PointDBModel.Batch" Role="Batch" Multiplicity="1" />
+    <End Type="PointDBModel.CourseOffered" Role="CourseOffered" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Batch">
+        <PropertyRef Name="BatchID" />
+      </Principal>
+      <Dependent Role="CourseOffered">
+        <PropertyRef Name="BatchID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CourseOff__Batch__1F2E9E6D">
+    <End Type="PointDBModel.Batch" Role="Batch" Multiplicity="1" />
+    <End Type="PointDBModel.CourseOffered" Role="CourseOffered" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Batch">
+        <PropertyRef Name="BatchID" />
+      </Principal>
+      <Dependent Role="CourseOffered">
+        <PropertyRef Name="BatchID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Section__BatchID__2E70E1FD">
+    <End Type="PointDBModel.Batch" Role="Batch" Multiplicity="1" />
+    <End Type="PointDBModel.Section" Role="Section" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Batch">
+        <PropertyRef Name="BatchID" />
+      </Principal>
+      <Dependent Role="Section">
+        <PropertyRef Name="BatchID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Student__BatchID__2F650636">
+    <End Type="PointDBModel.Batch" Role="Batch" Multiplicity="1" />
+    <End Type="PointDBModel.Student" Role="Student" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Batch">
+        <PropertyRef Name="BatchID" />
+      </Principal>
+      <Dependent Role="Student">
+        <PropertyRef Name="BatchID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Timetable__batch__7B264821">
+    <End Type="PointDBModel.Batch" Role="Batch" Multiplicity="0..1" />
+    <End Type="PointDBModel.Timetable" Role="Timetable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Batch">
+        <PropertyRef Name="BatchID" />
+      </Principal>
+      <Dependent Role="Timetable">
+        <PropertyRef Name="batchID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Student__Candida__314D4EA8">
+    <End Type="PointDBModel.CandidateStudent" Role="CandidateStudent" Multiplicity="1" />
+    <End Type="PointDBModel.Student" Role="Student" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CandidateStudent">
+        <PropertyRef Name="CandidateID" />
+      </Principal>
+      <Dependent Role="Student">
+        <PropertyRef Name="CandidateID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Config_FK">
+    <End Type="PointDBModel.Semester" Role="Semester" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="PointDBModel.Config" Role="Config" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Semester">
+        <PropertyRef Name="SemesterID" />
+      </Principal>
+      <Dependent Role="Config">
+        <PropertyRef Name="SemesterID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CourseEnr__Cours__0D0FEE32">
+    <End Type="PointDBModel.Course" Role="Course" Multiplicity="1" />
+    <End Type="PointDBModel.CourseEnrollment" Role="CourseEnrollment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Course">
+        <PropertyRef Name="CourseID" />
+      </Principal>
+      <Dependent Role="CourseEnrollment">
+        <PropertyRef Name="CourseID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CourseEnr__Cours__2B947552">
+    <End Type="PointDBModel.Course" Role="Course" Multiplicity="1" />
+    <End Type="PointDBModel.CourseEnrollment" Role="CourseEnrollment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Course">
+        <PropertyRef Name="CourseID" />
+      </Principal>
+      <Dependent Role="CourseEnrollment">
+        <PropertyRef Name="CourseID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CourseOff__Cours__1D4655FB">
+    <End Type="PointDBModel.Course" Role="Course" Multiplicity="1" />
+    <End Type="PointDBModel.CourseOffered" Role="CourseOffered" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Course">
+        <PropertyRef Name="CourseID" />
+      </Principal>
+      <Dependent Role="CourseOffered">
+        <PropertyRef Name="CourseID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CourseOff__Cours__7FB5F314">
+    <End Type="PointDBModel.Course" Role="Course" Multiplicity="1" />
+    <End Type="PointDBModel.CourseOffered" Role="CourseOffered" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Course">
+        <PropertyRef Name="CourseID" />
+      </Principal>
+      <Dependent Role="CourseOffered">
+        <PropertyRef Name="CourseID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Timetable__cours__793DFFAF">
+    <End Type="PointDBModel.Course" Role="Course" Multiplicity="0..1" />
+    <End Type="PointDBModel.Timetable" Role="Timetable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Course">
+        <PropertyRef Name="CourseID" />
+      </Principal>
+      <Dependent Role="Timetable">
+        <PropertyRef Name="courseID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CourseEnr__Stude__0C1BC9F9">
+    <End Type="PointDBModel.Student" Role="Student" Multiplicity="1" />
+    <End Type="PointDBModel.CourseEnrollment" Role="CourseEnrollment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="StudentID" />
+      </Principal>
+      <Dependent Role="CourseEnrollment">
+        <PropertyRef Name="StudentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CourseEnr__Stude__2AA05119">
+    <End Type="PointDBModel.Student" Role="Student" Multiplicity="1" />
+    <End Type="PointDBModel.CourseEnrollment" Role="CourseEnrollment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="StudentID" />
+      </Principal>
+      <Dependent Role="CourseEnrollment">
+        <PropertyRef Name="StudentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CourseEnro__FSID__0B27A5C0">
+    <End Type="PointDBModel.FacultySection" Role="FacultySection" Multiplicity="1" />
+    <End Type="PointDBModel.CourseEnrollment" Role="CourseEnrollment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FacultySection">
+        <PropertyRef Name="FSID" />
+      </Principal>
+      <Dependent Role="CourseEnrollment">
+        <PropertyRef Name="FSID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CourseEnro__FSID__29AC2CE0">
+    <End Type="PointDBModel.FacultySection" Role="FacultySection" Multiplicity="1" />
+    <End Type="PointDBModel.CourseEnrollment" Role="CourseEnrollment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FacultySection">
+        <PropertyRef Name="FSID" />
+      </Principal>
+      <Dependent Role="CourseEnrollment">
+        <PropertyRef Name="FSID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__StudentAs__Enrol__2C88998B">
+    <End Type="PointDBModel.CourseEnrollment" Role="CourseEnrollment" Multiplicity="1" />
+    <End Type="PointDBModel.StudentAssignment" Role="StudentAssignment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CourseEnrollment">
+        <PropertyRef Name="EnrollmentID" />
+      </Principal>
+      <Dependent Role="StudentAssignment">
+        <PropertyRef Name="EnrollmentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CourseFac__Cours__02925FBF">
+    <End Type="PointDBModel.CourseOffered" Role="CourseOffered" Multiplicity="1" />
+    <End Type="PointDBModel.CourseFaculty" Role="CourseFaculty" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CourseOffered">
+        <PropertyRef Name="CourseOfferedID" />
+      </Principal>
+      <Dependent Role="CourseFaculty">
+        <PropertyRef Name="CourseOfferedID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CourseFac__Cours__2116E6DF">
+    <End Type="PointDBModel.CourseOffered" Role="CourseOffered" Multiplicity="1" />
+    <End Type="PointDBModel.CourseFaculty" Role="CourseFaculty" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CourseOffered">
+        <PropertyRef Name="CourseOfferedID" />
+      </Principal>
+      <Dependent Role="CourseFaculty">
+        <PropertyRef Name="CourseOfferedID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CourseFac__EmpID__019E3B86">
+    <End Type="PointDBModel.Employee" Role="Employee" Multiplicity="1" />
+    <End Type="PointDBModel.CourseFaculty" Role="CourseFaculty" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="EmpID" />
+      </Principal>
+      <Dependent Role="CourseFaculty">
+        <PropertyRef Name="EmpID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CourseFac__EmpID__2022C2A6">
+    <End Type="PointDBModel.Employee" Role="Employee" Multiplicity="1" />
+    <End Type="PointDBModel.CourseFaculty" Role="CourseFaculty" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="EmpID" />
+      </Principal>
+      <Dependent Role="CourseFaculty">
+        <PropertyRef Name="EmpID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__FacultySec__CFID__0662F0A3">
+    <End Type="PointDBModel.CourseFaculty" Role="CourseFaculty" Multiplicity="1" />
+    <End Type="PointDBModel.FacultySection" Role="FacultySection" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CourseFaculty">
+        <PropertyRef Name="CFID" />
+      </Principal>
+      <Dependent Role="FacultySection">
+        <PropertyRef Name="CFID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__FacultySec__CFID__24E777C3">
+    <End Type="PointDBModel.CourseFaculty" Role="CourseFaculty" Multiplicity="1" />
+    <End Type="PointDBModel.FacultySection" Role="FacultySection" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CourseFaculty">
+        <PropertyRef Name="CFID" />
+      </Principal>
+      <Dependent Role="FacultySection">
+        <PropertyRef Name="CFID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CourseOff__Semes__1E3A7A34">
+    <End Type="PointDBModel.Semester" Role="Semester" Multiplicity="1" />
+    <End Type="PointDBModel.CourseOffered" Role="CourseOffered" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Semester">
+        <PropertyRef Name="SemesterID" />
+      </Principal>
+      <Dependent Role="CourseOffered">
+        <PropertyRef Name="SemesterID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Timetable__dayID__7849DB76">
+    <End Type="PointDBModel.daysofweek" Role="daysofweek" Multiplicity="0..1" />
+    <End Type="PointDBModel.Timetable" Role="Timetable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="daysofweek">
+        <PropertyRef Name="dayID" />
+      </Principal>
+      <Dependent Role="Timetable">
+        <PropertyRef Name="dayID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Employee__Depart__047AA831">
+    <End Type="PointDBModel.Department" Role="Department" Multiplicity="1" />
+    <End Type="PointDBModel.Employee" Role="Employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Department">
+        <PropertyRef Name="DepartmentID" />
+      </Principal>
+      <Dependent Role="Employee">
+        <PropertyRef Name="DepartmentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Employee__Design__038683F8">
+    <End Type="PointDBModel.Designation" Role="Designation" Multiplicity="1" />
+    <End Type="PointDBModel.Employee" Role="Employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Designation">
+        <PropertyRef Name="DesignationID" />
+      </Principal>
+      <Dependent Role="Employee">
+        <PropertyRef Name="DesignationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Timetable__empID__7755B73D">
+    <End Type="PointDBModel.Employee" Role="Employee" Multiplicity="0..1" />
+    <End Type="PointDBModel.Timetable" Role="Timetable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="EmpID" />
+      </Principal>
+      <Dependent Role="Timetable">
+        <PropertyRef Name="empID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__FacultySe__Secti__075714DC">
+    <End Type="PointDBModel.Section" Role="Section" Multiplicity="1" />
+    <End Type="PointDBModel.FacultySection" Role="FacultySection" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Section">
+        <PropertyRef Name="SectionID" />
+      </Principal>
+      <Dependent Role="FacultySection">
+        <PropertyRef Name="SectionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__FacultySe__Secti__12C8C788">
+    <End Type="PointDBModel.Section" Role="Section" Multiplicity="1" />
+    <End Type="PointDBModel.FacultySection" Role="FacultySection" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Section">
+        <PropertyRef Name="SectionID" />
+      </Principal>
+      <Dependent Role="FacultySection">
+        <PropertyRef Name="SectionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__FacultySe__Secti__25DB9BFC">
+    <End Type="PointDBModel.Section" Role="Section" Multiplicity="1" />
+    <End Type="PointDBModel.FacultySection" Role="FacultySection" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Section">
+        <PropertyRef Name="SectionID" />
+      </Principal>
+      <Dependent Role="FacultySection">
+        <PropertyRef Name="SectionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ProjectFram__FID__7FEAFD3E">
+    <End Type="PointDBModel.FrameworkLanguage" Role="FrameworkLanguage" Multiplicity="1" />
+    <End Type="PointDBModel.ProjectFramework" Role="ProjectFramework" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FrameworkLanguage">
+        <PropertyRef Name="FID" />
+      </Principal>
+      <Dependent Role="ProjectFramework">
+        <PropertyRef Name="FID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Student__Program__30592A6F">
+    <End Type="PointDBModel.Programme" Role="Programme" Multiplicity="0..1" />
+    <End Type="PointDBModel.Student" Role="Student" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Programme">
+        <PropertyRef Name="ProgrammeID" />
+      </Principal>
+      <Dependent Role="Student">
+        <PropertyRef Name="ProgrammeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ProjectFr__proje__00DF2177">
+    <End Type="PointDBModel.StudentProject" Role="StudentProject" Multiplicity="1" />
+    <End Type="PointDBModel.ProjectFramework" Role="ProjectFramework" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StudentProject">
+        <PropertyRef Name="ProjectID" />
+      </Principal>
+      <Dependent Role="ProjectFramework">
+        <PropertyRef Name="projectID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Timetable__roomI__7C1A6C5A">
+    <End Type="PointDBModel.Room" Role="Room" Multiplicity="0..1" />
+    <End Type="PointDBModel.Timetable" Role="Timetable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Room">
+        <PropertyRef Name="RoomID" />
+      </Principal>
+      <Dependent Role="Timetable">
+        <PropertyRef Name="roomID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Timetable__secti__7A3223E8">
+    <End Type="PointDBModel.Section" Role="Section" Multiplicity="0..1" />
+    <End Type="PointDBModel.Timetable" Role="Timetable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Section">
+        <PropertyRef Name="SectionID" />
+      </Principal>
+      <Dependent Role="Timetable">
+        <PropertyRef Name="sectionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Timetable__times__7D0E9093">
+    <End Type="PointDBModel.Timeslot" Role="Timeslot" Multiplicity="0..1" />
+    <End Type="PointDBModel.Timetable" Role="Timetable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Timeslot">
+        <PropertyRef Name="TimeslotID" />
+      </Principal>
+      <Dependent Role="Timetable">
+        <PropertyRef Name="timeslotID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
